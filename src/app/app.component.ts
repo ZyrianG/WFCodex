@@ -9,4 +9,5 @@ export class AppComponent {
   title = 'app';
 
   isCollapsed = false;
+
 }
