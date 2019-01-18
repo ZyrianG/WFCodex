@@ -4,6 +4,10 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+  <button mat-button>Home</button>
+
   <button mat-button [matMenuTriggerFor]="basics">Basics</button>
 
   <mat-menu #basics="matMenu" [overlapTrigger]="false">
@@ -21,68 +25,17 @@
     <button mat-menu-item>Melee</button>
   </mat-menu>
 
-  <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
+  <button mat-button [matMenuTriggerFor]="advanced">Advanced</button>
 
-      <li class="dropdown show">
-        <a href="#" 
-        class="nav-link dropdown-toggle"
-        id="basics" 
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-        Basics
-        </a>
+  <mat-menu #advanced="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item>Mastery</button>
+    <button mat-menu-item>Focus</button>
+    <button mat-menu-item>Clan</button>
+  </mat-menu>
+  </div>
 
-        <div class="dropdown-menu" aria-labelledby="basics">
-          <div class="dropdown-submenu">
-            <a href="#" (mouseover)="isCollapsed=true" (mouseout)="isCollapsed=false" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Warframe</a>
-              <ul class="nav navbar-nav dropdown-menu" [style.display]="isCollapsed ? 'block' : 'none'">   
-                <li><a href="#" class="dropdown-item">Excalibur</a></li>   
-              </ul>
-          </div>   
-
-          <div class="dropdown-submenu">
-            <a href="#" (mouseover)="isCollapsed=true" (mouseout)="isCollapsed=false" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Weapons</a>
-              <ul class="nav navbar-nav dropdown-menu" [style.display]="isCollapsed ? 'block' : 'none'">   
-                <li><a href="#" class="dropdown-item">Primary</a></li>   
-              </ul>
-          </div>   
-
-          <div class="dropdown-submenu">
-            <a href="#" class="dropdown-item">Mods</a>
-          </div>   
-
-
-        </div>
-      </li>
-
-
-      <li class="dropdown show">
-        <a href="#" 
-        class="nav-link dropdown-toggle"
-        id="advanced"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">
-          Advanced
-        </a>
-
-        <div class="dropdown-menu" aria-labelledby="advanced">
-          <a href="#" class="dropdown-item">Mastery</a>
-          <a href="#" class="dropdown-item">Syndicates</a>
-          <a href="#" class="dropdown-item">Focus</a>
-          <a href="#" class="dropdown-item">Clan</a>
-        </div>
-      </li>
-    </ul>
-    
-  </div> -->
   <div class="collapse navbar-collapse" id="navContent">
-    <form class="form-inline my-3 my-lg-0">
+    <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>

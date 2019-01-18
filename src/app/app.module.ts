@@ -6,6 +6,10 @@ import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/mate
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { WarframeComponent } from './warframe/warframe.component';
+import { WarframeListComponent } from './warframe/warframe-list/warframe-list.component';
+import { WeaponsComponent } from './weapons/weapons.component';
+import { WeaponsListComponent } from './weapons/weapons-list/weapons-list.component';
 
 const modules = [
   MatMenuModule,
@@ -17,7 +21,11 @@ const modules = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    WarframeComponent,
+    WarframeListComponent,
+    WeaponsComponent,
+    WeaponsListComponent
   ],
   imports: [
     BrowserModule,
