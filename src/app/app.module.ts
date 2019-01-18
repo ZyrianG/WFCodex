@@ -4,12 +4,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { WarframeComponent } from './warframe/warframe.component';
-import { WarframeListComponent } from './warframe/warframe-list/warframe-list.component';
-import { WeaponsComponent } from './weapons/weapons.component';
-import { WeaponsListComponent } from './weapons/weapons-list/weapons-list.component';
 
 const modules = [
   MatMenuModule,
@@ -22,15 +21,13 @@ const modules = [
   declarations: [
     AppComponent,
     HomeComponent,
-    WarframeComponent,
-    WarframeListComponent,
-    WeaponsComponent,
-    WeaponsListComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     modules,
+    AppRoutingModule,
   ],
   exports: [
     modules,

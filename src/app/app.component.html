@@ -11,8 +11,8 @@
   <button mat-button [matMenuTriggerFor]="basics">Basics</button>
 
   <mat-menu #basics="matMenu" [overlapTrigger]="false">
-    <button mat-menu-item [matMenuTriggerFor]="warframes">Warframes</button>
-    <button mat-menu-item [matMenuTriggerFor]="weapons">Weapons</button>
+    <button mat-menu-item [matMenuTriggerFor]="warframes" class="nav-link" routerLink="/warframe">Warframes</button>
+    <button mat-menu-item [matMenuTriggerFor]="weapons" class="nav-link" routerLink="/weapons">Weapons</button>
   </mat-menu>
 
   <mat-menu #warframes="matMenu" xPosition="after">
@@ -41,3 +41,6 @@
     </form>
   </div>
 </nav>
+<div class="router container">
+  <router-outlet></router-outlet>
+</div>
