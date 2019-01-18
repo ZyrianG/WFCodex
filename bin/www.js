@@ -1,4 +1,4 @@
-var app = require('../app'); // identical to angular imports
+var app = require('../app');
 
 var port = 3000;
 
