@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatIconModule, MatExpansionModule, MatTabsModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +15,8 @@ const modules = [
   MatButtonModule,
   MatCheckboxModule,
   MatIconModule,
+  MatExpansionModule,
+  MatTabsModule,
 ];
 
 @NgModule({
