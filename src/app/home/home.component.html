@@ -1,121 +1,79 @@
 <h1>Home</h1>
-<br><hr>
+<br>
+<hr>
 <h2>Latest Updates</h2>
 
-<mat-tab-group>
+<mat-tab-group (selectedTabChange)="reloadTabs()">
   <mat-tab label="PC">
-<mat-expansion-panel style="background-color: gray;">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      PC Hotfix 24.2.3
-    </mat-panel-title>
-    <mat-panel-description>
-      Release Date
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-
-<p>Patch notes here</p>
-
-</mat-expansion-panel>
-
-  <mat-expansion-panel style="background-color: lightblue;">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        PS4 Update 24.0
-      </mat-panel-title>
-      <mat-panel-description>
-        Release Date
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-  
-  <p>Patch notes here</p>
-  
-  </mat-expansion-panel>
-
-  <mat-expansion-panel style="background-color: lightgreen;">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          XB1 Update 24.0
-        </mat-panel-title>
-        <mat-panel-description>
-          Release Date
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-    
-    <p>Patch notes here</p>
-    
-    </mat-expansion-panel>
-
-    <mat-expansion-panel style="background-color: pink;">
-        <mat-expansion-panel-header>
+    <div >
+      <mat-expansion-panel *ngFor="let pcver of pcversion">
+        <mat-expansion-panel-header style="background-color: gray;">
           <mat-panel-title>
-            NSW Update 23.5
+            PC {{ pcver.releaseVer }}
           </mat-panel-title>
           <mat-panel-description>
-            Release Date
+            {{ pcver.releaseDate }}
           </mat-panel-description>
         </mat-expansion-panel-header>
-      
-      <p>Patch notes here</p>
-      
-      </mat-expansion-panel>
-    </mat-tab>
+        <hr>
+        <p>{{ pcver.patchNotes }}</p>
 
-        <mat-tab label="PS4">
-        <mat-expansion-panel style="background-color: gray;">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              PC Hotfix 24.2.3
-            </mat-panel-title>
-            <mat-panel-description>
-              Release Date
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-        
-        <p>Patch notes here</p>
-        
-        </mat-expansion-panel>
-        
-          <mat-expansion-panel style="background-color: lightblue;">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                PS4 Update 24.0
-              </mat-panel-title>
-              <mat-panel-description>
-                Release Date
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-          
-          <p>Patch notes here</p>
-          
-          </mat-expansion-panel>
-        
-          <mat-expansion-panel style="background-color: lightgreen;">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  XB1 Update 24.0
-                </mat-panel-title>
-                <mat-panel-description>
-                  Release Date
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-            
-            <p>Patch notes here</p>
-            
-            </mat-expansion-panel>
-        
-            <mat-expansion-panel style="background-color: pink;">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    NSW Update 23.5
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    Release Date
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-              
-              <p>Patch notes here</p>
-              
-              </mat-expansion-panel>
-    </mat-tab>
+      </mat-expansion-panel>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="PS4">
+    <div *ngIf="showTabContent">
+      <mat-expansion-panel *ngFor="let ps4ver of ps4version">
+        <mat-expansion-panel-header style="background-color: lightblue;">
+          <mat-panel-title>
+            PC {{ ps4ver.releaseVer }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ ps4ver.releaseDate }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <hr>
+        <p>{{ ps4ver.patchNotes }}</p>
+
+      </mat-expansion-panel>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="XB1">
+    <div *ngIf="showTabContent">
+      <mat-expansion-panel *ngFor="let xb1ver of xb1version">
+        <mat-expansion-panel-header style="background-color: lightgreen;">
+          <mat-panel-title>
+            PC {{ xb1ver.releaseVer }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ xb1ver.releaseDate }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <hr>
+        <p>{{ xb1ver.patchNotes }}</p>
+
+      </mat-expansion-panel>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="NSW">
+    <div *ngIf="showTabContent">
+      <mat-expansion-panel *ngFor="let nswver of nswversion">
+        <mat-expansion-panel-header style="background-color: pink">
+          <mat-panel-title>
+            PC {{ nswver.releaseVer }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ nswver.releaseDate }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <hr>
+        <p>{{ nswver.patchNotes }}</p>
+
+      </mat-expansion-panel>
+    </div>
+  </mat-tab>
+
 </mat-tab-group>
