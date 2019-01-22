@@ -9,12 +9,16 @@
   <button mat-button [matMenuTriggerFor]="basics">Basics</button>
 
   <mat-menu #basics="matMenu" [overlapTrigger]="false">
-    <button mat-menu-item [matMenuTriggerFor]="warframes" class="nav-link" routerLink="/warframe">Warframes</button>
+    <button mat-menu-item [matMenuTriggerFor]="warframes" class="nav-link" routerLink="/warframes">Warframes</button>
     <button mat-menu-item [matMenuTriggerFor]="weapons" class="nav-link" routerLink="/weapons">Weapons</button>
   </mat-menu>
 
   <mat-menu #warframes="matMenu" xPosition="after">
-    <button mat-menu-item>Excalibur</button>
+    <button mat-menu-item [matMenuTriggerFor]="excaliburPrime">Excalibur</button>
+  </mat-menu>
+  
+  <mat-menu #excaliburPrime="matMenu" xPosition="after">
+    <button mat-menu-item>Prime</button>
   </mat-menu>
 
   <mat-menu #weapons="matMenu" xPosition="after">
