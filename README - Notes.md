@@ -27,3 +27,8 @@ Add the following in .agular-cli.json
         ],
 ```
 
+## Sequelize
+Run the following commands to create db tables
+```
+sequelize model:generate --name Warframes --attributes id:integer,name:string,prime:integer,umbra:integer
+```
