@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 @Component ({
     selector: 'app-warframe',
-    templateUrl: './warframes/warframe-list/warframes.component.html',
-    styleUrls: ['./warframes/warframe-list/warframes.component.css']
+    templateUrl: './warframes.component.html',
+    styleUrls: ['./warframes.component.css']
 })
 export class WarframesComponent implements OnInit {
 
