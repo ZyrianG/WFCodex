@@ -20,5 +20,24 @@ ReE = function(res, err, code) { // Web response error
     err = err.message;
   }
 
-  if (typeof code !== 'undefinted') res.statusCode = code;
+  if (typeof code !== 'undefined') res.statusCode = code;
+
+  return res.json({success:false, error: err});
 }
+
+ReS = function(res, data, code){ // Success Web Response
+  let send_data = {success:true};
+
+  if(typeof data == 'object'){
+      send_data = Object.assign(data, send_data);//merge the objects
+  }
+
+  if(typeof code !== 'undefined') res.statusCode = code;
+
+  return res.json(send_data)
+};
+
+//This is here to handle all the uncaught promise rejections
+process.on('unhandledRejection', error => {
+  console.error('Uncaught Error', pe(error));
+});
