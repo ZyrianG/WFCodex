@@ -3,6 +3,7 @@ require('./config/config');
 var models = require('./models');
 require('./global_functions');
 var bodyParser = require('body-parser');
+var warframes = require('./controllers/WarframesController');
 
 var app = express();
 
@@ -25,7 +26,6 @@ app.use(function (req, res, next) {
     next();
   });
 
-app.get('/', (req, res) => {res.send("Hello There!")});
 
 models.sequelize
     .authenticate()
@@ -39,3 +39,6 @@ models.sequelize
 if (CONFIG.app === 'dev') {
     models.sequelize.sync();
 }
+
+app.get('/warframes', warframes.getAll);
+app.get('/', (req, res) => {res.send("Hello There!")});
