@@ -7,21 +7,18 @@ const getAll = (req, res) => {
     var whereStatement = {};
     if (req.query.name)
         whereStatement.name = {
-            $like: '%' + req.query.name + '%'
+            $like: `%${ req.query.name }%`
         };
 
-    [err, warframes] = await to(Warframes.findAll());
+    [err, warframes] = await to(Warframes.findAll({where: whereStatement}));
 
-    let warframesJson = [];
-    for (let i in warframes ) {
-        let warframes = warframes[i];
-    }
+    return res.json(warframes);
 }
+module.exports.getAll = getAll;
 
 const get = (req, res) => {
     res.setHeader('Content Type', 'application/json');
-    let warframes = req.warframes;
+    let err, warframe;
 
-    return ReS(res, {warframes:warframes.toWeb()});
 }
 module.exports.get = get;
