@@ -14,9 +14,6 @@ module.exports = {
       prime: {
         type: Sequelize.INTEGER
       },
-      umbra: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

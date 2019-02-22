@@ -1,6 +1,6 @@
 const Warframes = require('../models').Warframes;
 
-const getAll = (req, res) => {
+const getAll = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     let err, warframes;
     
@@ -11,6 +11,11 @@ const getAll = (req, res) => {
         };
 
     [err, warframes] = await to(Warframes.findAll({where: whereStatement}));
+    console.log(warframe);
+    if(!warframes) { // error handling
+        res.statusCode = 404;
+        return res.json({ success: false, error: err});
+    }
 
     return res.json(warframes);
 }
