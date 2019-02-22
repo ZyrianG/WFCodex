@@ -40,6 +40,7 @@ if (CONFIG.app === 'dev') {
     models.sequelize.sync();
 }
 
+app.get('/warframes/:warframeId', warframes.get);
 app.get('/warframes', warframes.getAll);
 app.get('/', (req, res) => {res.send("Hello There!")});
 
