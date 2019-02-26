@@ -37,7 +37,9 @@ models.sequelize
     });
 
 if (CONFIG.app === 'dev') {
-    models.sequelize.sync();
+    models.sequelize.sync({
+        force: true // drops all tables before sychronizing
+    });
 }
 
 app.get('/warframes', warframes.getAll);

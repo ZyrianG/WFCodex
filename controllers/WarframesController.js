@@ -1,6 +1,6 @@
 const Warframes = require('../models').Warframes;
 
-const getAll = async function (req, res) {
+const getAll = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     let err, warframes;
     
@@ -21,7 +21,7 @@ const getAll = async function (req, res) {
 }
 module.exports.getAll = getAll;
 
-const get = (req, res) => {
+const get = async (req, res) => {
     res.setHeader('Content Type', 'application/json');
     let err, warframe;
 
