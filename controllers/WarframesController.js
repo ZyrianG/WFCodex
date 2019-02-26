@@ -24,6 +24,12 @@ module.exports.getAll = getAll;
 const get = async (req, res) => {
     res.setHeader('Content Type', 'application/json');
     let err, warframe;
+    let warframeId = req.params.warframeId;
+    
+    [err, warframe] = await to(Warframes.findByPk({warframeId}));
+    if (err) return ReE(res, err, 500);
+    if (!warframeId) return ReE(res, undefined, 404);
 
+    return res.json(warframe);
 }
 module.exports.get = get;
