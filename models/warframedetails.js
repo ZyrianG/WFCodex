@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     warframeid: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
     },
   }, {
     classMethods: {
