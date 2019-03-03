@@ -33,3 +33,38 @@ const get = async (req, res) => {
     return res.json(warframe);
 }
 module.exports.get = get;
+
+const create = async (req, res) => {
+    res.setHeader('Content Type', 'application/json');
+    let err, warframe, warframeInfo;
+
+    warframeInfo = req.body;
+
+    [err, session] = await to(isUnique(warframeInfo.Name));
+    if (err) return ReE(res, err, 422);
+
+    [err, warframe] = await to(Warframes.create(warframeInfo))
+    if (err) return ReE(res, err, 422);
+
+    [err, session] = await to(warframe.save());
+    if (err) return ReE(res, err, 422);
+
+    return ReS(res, {
+        session: sessionJson
+    }, 201);
+}
+module.exports.create = create;
+
+const isUnique = async (name) => {
+    let warframe;
+
+    [err, warframe] = await to(findOne({
+        where: {
+            Name: name
+        }
+    }));
+    if (warframe) {
+        throw new error ('Warframe already exists!');
+    }
+}
+module.exports.isUnique = isUnique;
