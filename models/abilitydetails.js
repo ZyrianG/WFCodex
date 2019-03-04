@@ -20,5 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     models.AbilityDetails.belongsToMany(models.Warframes, {through: 'WarframeAbility', foreignKey: 'abilityid'});
   };
 
+  AbilityDetails.prototype.toWeb = function () {
+    let json = this.toJSON();
+    return json;
+  };
+
   return AbilityDetails;
 };

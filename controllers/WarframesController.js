@@ -11,12 +11,9 @@ const getAll = async (req, res) => {
         };
 
     [err, warframes] = await to(Warframes.findAll({where: whereStatement}));
-    console.log(warframes);
-    if(!warframes) { // error handling
-        res.statusCode = 404;
-        return res.json({ success: false, error: err});
-    }
-
+    
+    if(!warframes) return ReE(res, undefined, 404);
+    
     return res.json(warframes);
 }
 module.exports.getAll = getAll;
@@ -70,7 +67,7 @@ module.exports.isUnique = isUnique;
 const update = async (res, req) => {
     let err, warframe, data;
     data = req.body;
-    
+
     [err, warframe] = await to(Warframes.update(data, {
         where: {
             id: data.id
