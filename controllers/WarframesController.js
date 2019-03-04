@@ -11,7 +11,7 @@ const getAll = async (req, res) => {
         };
 
     [err, warframes] = await to(Warframes.findAll({where: whereStatement}));
-    console.log(warframe);
+    console.log(warframes);
     if(!warframes) { // error handling
         res.statusCode = 404;
         return res.json({ success: false, error: err});
