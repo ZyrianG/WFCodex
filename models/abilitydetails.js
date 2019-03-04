@@ -10,7 +10,15 @@ module.exports = (sequelize, DataTypes) => {
     augment: {
       type: DataTypes.INTEGER,
     },
+    slot: {
+      type: DataTypes.INTEGER,
+      validate: { min: 0, max: 6 }
+    }
   }, {});
-  
+
+  AbilityDetails.associate = function(models) {  
+    models.AbilityDetails.belongsToMany(models.Warframes, {through: 'WarframeAbility', foreignKey: 'abilityid'});
+  };
+
   return AbilityDetails;
 };

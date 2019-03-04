@@ -22,10 +22,5 @@ module.exports = (sequelize, DataTypes) => {
     models.WarframeStats.belongsTo(models.Warframes, {foreignKey: 'warframeid', targetKey: 'id'});
   };
 
-  WarframeStats.prototype.toWeb = function () {
-    let json = this.toJSON();
-    return json;
-  };
-
   return WarframeStats;
 };

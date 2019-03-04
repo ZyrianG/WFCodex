@@ -9,6 +9,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
   }, {});
-  
+
+  Warframes.associate = function(models) {  
+    models.Warframes.belongsToMany(models.AbilityDetails, {through: 'WarframeAbility', foreignKey: 'warframeid'});
+  };
+
+  Warframes.prototype.toWeb = function () {
+    let json = this.toJSON();
+    return json;
+  };
+
   return Warframes;
 };
