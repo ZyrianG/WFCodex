@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
 Warframes.associate = function(models) {
-  models.Warframes.belongsTo(model.WarframeStats, {foreignKey: 'warframeid', targetKey: 'id'});
-  models.Warframes.belongsTo(model.WarframeDetails, {foreignKey: 'warframeid', targetKey: 'id'});  
+  models.Warframes.belongsTo(models.WarframeStats, {foreignKey: 'warframeid', targetKey: 'id'});
+  models.Warframes.belongsTo(models.WarframeDetails, {foreignKey: 'warframeid', targetKey: 'id'});  
 }
 
 Warframes.prototype.toWeb = function () {

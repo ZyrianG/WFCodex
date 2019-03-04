@@ -1,8 +1,9 @@
 CONFIG = {}
 
-CONFIG.app = 'dev'
-CONFIG.port = '3000'
+CONFIG.app = 'dev';
+CONFIG.port = '3000';
 
+CONFIG.db_host = 'localhost';
 CONFIG.db_dialect = 'mysql';
 CONFIG.db_name = 'wfcodex';
 CONFIG.db_user = 'root';

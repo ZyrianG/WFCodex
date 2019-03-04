@@ -1,11 +1,12 @@
-var express = require('express');
-require('./config/config');
-var models = require('./models');
 require('./global_functions');
-var bodyParser = require('body-parser');
-var warframes = require('./controllers/WarframesController');
+require('./config/config');
 
-var app = express();
+const express = require('express');
+const models = require('./models');
+const bodyParser = require('body-parser');
+const warframes = require('./controllers/WarframesController');
+
+const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,12 +39,13 @@ models.sequelize
 
 if (CONFIG.app === 'dev') {
     models.sequelize.sync({
-        force: true // drops all tables before sychronizing
+        force: true // drops all tables then recreates them
     });
 }
 
 app.get('/warframes/:warframeId', warframes.get);
 app.get('/warframes', warframes.getAll);
+app.post('warframes/create', warframes.create);
 app.get('/', (req, res) => {res.send("Hello There!")});
 
 module.exports = app;
