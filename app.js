@@ -45,7 +45,8 @@ if (CONFIG.app === 'dev') {
 
 app.get('/warframes/:warframeId', warframes.get);
 app.get('/warframes', warframes.getAll);
-app.post('warframes/create', warframes.create);
+app.post('/warframes', warframes.create);
+app.put('/warframes', warframes.update);
 app.get('/', (req, res) => {res.send("Hello There!")});
 
 module.exports = app;

@@ -8,22 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      passive: {
-        type: Sequelize.INTEGER
-      },
-      ability1: {
-        type: Sequelize.INTEGER
-      },
-      ability2: {
-        type: Sequelize.INTEGER
-      },
-      ability3: {
-        type: Sequelize.INTEGER
-      },
-      ultimate: {
+      abilityid: {
         type: Sequelize.INTEGER
       },
       warframeid: {
+        type: Sequelize.INTEGER
+      },
+      abilityslot: {
         type: Sequelize.INTEGER
       },
       createdAt: {

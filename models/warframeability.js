@@ -1,30 +1,24 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var WarframeAbility = sequelize.define('WarframeAbility', {
-    passive: {
-      type: DataTypes.INTEGER
-    },
-    ability1: {
-      type: DataTypes.INTEGER,
-    },
-    ability2: {
-      type: DataTypes.INTEGER,
-    },
-    ability3: {
-      type: DataTypes.INTEGER,
-    },
-    ultimate: {
+    abilityid: {
       type: DataTypes.INTEGER,
     },
     warframeid: {
       type: DataTypes.INTEGER,
-    }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+    },
+    abilityslot: {
+      type: DataTypes.INTEGER,
+    },
+  }, {});
+  WarframeAbility.associate = function(models) {  
+    models.WarframeAbility.belongsTo(models.Warframes, {foreignKey: 'warframeid', targetKey: 'id'});
+    models.WarframeAbility.hasMany(models.AbilityDetails, )
+  };
+
+  WarframeAbility.prototype.toWeb = function () {
+    let json = this.toJSON();
+    return json;
+  };
   return WarframeAbility;
 };

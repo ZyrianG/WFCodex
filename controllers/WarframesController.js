@@ -35,13 +35,13 @@ const get = async (req, res) => {
 module.exports.get = get;
 
 const create = async (req, res) => {
-    res.setHeader('Content Type', 'application/json');
+    res.setHeader('Content-Type', 'application/json');
     let err, warframe, warframeInfo;
 
     warframeInfo = req.body;
 
-    [err, session] = await to(isUnique(warframeInfo.Name));
-    if (err) return ReE(res, err, 422);
+    // [err, session] = await to(isUnique(warframeInfo.Name));
+    // if (err) return ReE(res, err, 422);
 
     [err, warframe] = await to(Warframes.create(warframeInfo))
     if (err) return ReE(res, err, 422);
@@ -49,9 +49,7 @@ const create = async (req, res) => {
     [err, session] = await to(warframe.save());
     if (err) return ReE(res, err, 422);
 
-    return ReS(res, {
-        session: sessionJson
-    }, 201);
+    return ReS(res, {warframe}, 201);
 }
 module.exports.create = create;
 
@@ -68,3 +66,20 @@ const isUnique = async (name) => {
     }
 }
 module.exports.isUnique = isUnique;
+
+const update = async (res, req) => {
+    let err, warframe, data;
+    data = req.body;
+    
+    [err, warframe] = await to(Warframes.update(data, {
+        where: {
+            id: data.id
+        }
+    }));
+    if (err) { 
+        return ReE(res, err);
+    }
+
+    return ReS(res);
+}
+module.exports.update = update;

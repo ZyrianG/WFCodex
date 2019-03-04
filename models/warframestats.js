@@ -17,5 +17,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
   }, {});
+
+  WarframeStats.associate = function(models) {  
+    models.WarframeStats.belongsTo(models.Warframes, {foreignKey: 'warframeid', targetKey: 'id'});
+  };
+
+  WarframeStats.prototype.toWeb = function () {
+    let json = this.toJSON();
+    return json;
+  };
+
   return WarframeStats;
 };
