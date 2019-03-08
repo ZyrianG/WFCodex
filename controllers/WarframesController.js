@@ -19,11 +19,15 @@ const getAll = async (req, res) => {
 module.exports.getAll = getAll;
 
 const get = async (req, res) => {
-    res.setHeader('Content Type', 'application/json');
-    let err, warframe;
+    res.setHeader('Content-Type', 'application/json');
     let warframeId = req.params.warframeId;
+    let err, warframe;
     
-    [err, warframe] = await to(Warframes.findByPk({warframeId}));
+    [err, warframe] = await to(Warframes.findOne({
+        where: {
+            id : warframeId
+        }
+    }));
     if (err) return ReE(res, err, 500);
     if (!warframeId) return ReE(res, undefined, 404);
 
@@ -67,7 +71,7 @@ module.exports.isUnique = isUnique;
 const update = async (res, req) => {
     let err, warframe, data;
     data = req.body;
-
+    
     [err, warframe] = await to(Warframes.update(data, {
         where: {
             id: data.id
