@@ -71,12 +71,14 @@ const isUnique = async (name) => {
 module.exports.isUnique = isUnique;
 
 const update = async (res, req) => {
+    let warframeId = req.params.warframeId;
     let err, warframe, data;
     data = req.body;
     
+    
     [err, warframe] = await to(Warframes.update(data, {
         where: {
-            id: data.id
+            id: warframeId
         }
     }));
     if (err) { 
@@ -88,8 +90,8 @@ const update = async (res, req) => {
 module.exports.update = update;
 
 const remove = async (res, req) => {
-    let err, warframe, warframeId;
-    warframeId = req.params.warframeId;
+    let warframeId = req.params.warframeId;
+    let err, warframe;
 
     [err, warframe] = await to(Warframes.find({
         where : {
