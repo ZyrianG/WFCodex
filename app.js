@@ -47,6 +47,7 @@ app.get('/warframes/:warframeId', warframes.get);
 app.get('/warframes', warframes.getAll);
 app.post('/warframes', warframes.create);
 app.put('/warframes', warframes.update);
+app.delete('/warframes', warframes.remove);
 app.get('/', (req, res) => {res.send("Hello There!")});
 
 module.exports = app;

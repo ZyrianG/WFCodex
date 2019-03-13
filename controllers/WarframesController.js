@@ -10,7 +10,9 @@ const getAll = async (req, res) => {
             $like: `%${ req.query.name }%`
         };
 
-    [err, warframes] = await to(Warframes.findAll({where: whereStatement}));
+    [err, warframes] = await to(Warframes.findAll({
+        where: whereStatement
+    }));
     
     if(!warframes) return ReE(res, undefined, 404);
     
@@ -23,7 +25,7 @@ const get = async (req, res) => {
     let warframeId = req.params.warframeId;
     let err, warframe;
     
-    [err, warframe] = await to(Warframes.findOne({
+    [err, warframe] = await to(Warframes.find({
         where: {
             id : warframeId
         }
@@ -84,3 +86,23 @@ const update = async (res, req) => {
     return ReS(res);
 }
 module.exports.update = update;
+
+const remove = async (res, req) => {
+    let err, warframe, warframeId;
+    warframeId = req.params.warframeId;
+
+    [err, warframe] = await to(Warframes.find({
+        where : {
+            id : warframeId
+        }
+    }));
+
+    [err, warframe] = await to(warframe.destroy());
+    if (err) return ReE(res, 'Error occured trying to delete the Warframe');
+
+    return ReS(res, {
+        message: 'Deleted Warframe'
+    }, 204);
+
+}
+module.exports.remove = remove;
