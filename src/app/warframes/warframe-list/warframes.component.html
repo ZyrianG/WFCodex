@@ -1,3 +1,13 @@
-<p>
-    Warframes List
-</p>
+<div class="row header-row">
+    <div class="col-md-6">
+        <strong>Name</strong>
+    </div>
+</div>
+
+<ul class="list-group">
+    <li *ngFor="let warframe of warframes" class="list-group-item">
+        <div class="row">
+            <div class="col-md-6">{{warframe.Name}}</div>
+        </div>
+    </li>
+</ul>

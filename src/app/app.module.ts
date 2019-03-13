@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { WarframesModule } from './warframes/warframes.module';
+import { WarframesService } from './warframes/warframes.service';
 
 const modules = [
   MatMenuModule,
@@ -36,7 +37,7 @@ const modules = [
   exports: [
     modules,
   ],
-  providers: [],
+  providers: [WarframesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
