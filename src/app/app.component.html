@@ -14,10 +14,13 @@
   </mat-menu>
 
   <mat-menu #warframes="matMenu" xPosition="after">
-    <button mat-menu-item [matMenuTriggerFor]="excaliburPrime">Excalibur</button>
+    <ng-container *ngFor="let warframe of warframes">
+      <button mat-menu-item [matMenuTriggerFor]="sub_menu">{{ warframe }}</button>
+    </ng-container>
   </mat-menu>
   
-  <mat-menu #excaliburPrime="matMenu" xPosition="after">
+
+  <mat-menu #sub_menu="matMenu" xPosition="after">
     <button mat-menu-item>Prime</button>
   </mat-menu>
 

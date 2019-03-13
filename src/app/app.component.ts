@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +10,7 @@ export class AppComponent {
 
   isCollapsed = false;
 
+  warframeMenu = {
+    'main' : ['test', 'test2'],
+  };
 }
