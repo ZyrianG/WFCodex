@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { WarframesModule } from './warframes/warframes.module';
 import { WarframesService } from './warframes/warframes.service';
 
-const modules = [
+const matModules = [
   MatMenuModule,
   MatButtonModule,
   MatCheckboxModule,
@@ -30,12 +30,12 @@ const modules = [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    modules,
+    matModules,
     WarframesModule,
     AppRoutingModule,
   ],
   exports: [
-    modules,
+    matModules,
   ],
   providers: [WarframesService],
   bootstrap: [AppComponent]

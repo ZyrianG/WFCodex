@@ -11,7 +11,7 @@ export interface IWarframe {
   updatedAt: Date;
 }
 
-export const emptywarframe: IWarframe = {
+export const emptyWarframe: IWarframe = {
   id: 0,
   Name: '',
   Prime: 0,
