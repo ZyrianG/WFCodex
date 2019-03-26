@@ -1,13 +1,20 @@
 <div class="row header-row">
-    <div class="col-md-6">
-        <strong>Name</strong>
+    <div class="header-row">
+        <h4><strong>Warframes</strong></h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3" *ngFor="let warframe of warframes">
+        <div class="card" style="width: 15rem;">
+            <img class="card-img-top" src="/assets/images/temp_img.png" alt="Image of {{warframe.Name}}">
+            <div class="card-body">
+                <h5 class="card-title">{{warframe.Name}}</h5>
+                <p class="card-text">Sample text</p>
+            </div>
+        </div>
     </div>
 </div>
 
-<ul class="list-group">
-    <li *ngFor="let warframe of warframes" class="list-group-item">
-        <div class="row">
-            <div class="col-md-6">{{warframe.Name}}</div>
-        </div>
-    </li>
-</ul>
+<br>
+<button class="btn btn-primary btn-sm">Create</button>
+<button class="btn btn-danger btn-sm">Delete</button>

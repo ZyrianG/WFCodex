@@ -10,6 +10,7 @@ export class AppComponent {
 
   isCollapsed = false;
 
+  // Testing a multi-level menu
   warframeMenu = {
     'main' : ['test', 'test2'],
   };
