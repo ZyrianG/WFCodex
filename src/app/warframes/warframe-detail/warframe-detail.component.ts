@@ -29,4 +29,17 @@ export class WarframeDetailsComponent implements OnInit {
         }
     }
 
+    save(): void {
+        this.warframesService.save(this.warframe)
+        .subscribe(
+            (success) => {
+                this.backToWarframes();
+            }
+        );
+    }
+
+    backToWarframes(): void {
+        this.router.navigateByUrl(`/warframes`);
+    }
+
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { WarframesService } from '../warframes.service';
+import { WarframesService, IWarframe } from '../warframes.service';
 
 @Component ({
     selector: 'app-warframe',
@@ -27,5 +27,9 @@ export class WarframesComponent implements OnInit {
                 this.warframes = answer.body;
             },
         );
+    }
+
+    goToWarframe(warframe: IWarframe): void {
+        this.router.navigateByUrl(`/warframes/${warframe.id}`);
     }
 }

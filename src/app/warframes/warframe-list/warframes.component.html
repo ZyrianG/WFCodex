@@ -4,7 +4,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3" *ngFor="let warframe of warframes">
+    <div class="col-md-3" *ngFor="let warframe of warframes" (click)="goToWarframe(warframe)">
         <div class="card" style="width: 15rem;">
             <img class="card-img-top" src="/assets/images/temp_img.png" alt="Image of {{warframe.Name}}">
             <div class="card-body">
