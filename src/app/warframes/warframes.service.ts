@@ -22,7 +22,6 @@ export const emptyWarframe: IWarframe = {
 // TODO CCC: hook this up to the backend
 @Injectable()
 export class WarframesService {
-  // baseurl = `${environment.baseApiUrl}/api/v1/customers`;
 
   items: IWarframe[] = [
     {
@@ -49,7 +48,7 @@ export class WarframesService {
   ];
 
   constructor(
-    // private http: HttpClient,
+    private http: HttpClient,
   ) { }
 
   get(query: string): Observable<HttpResponse<IWarframe[]>> {
