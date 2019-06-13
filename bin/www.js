@@ -1,6 +1,6 @@
-var app = require('../app');
+const app = require('../app');
 
-var port = 3000;
+const port = CONFIG.port || 3000;
 
 app.get('/test', (req, res) => {res.send("Testing 123")});
 app.get('/testing', (req, res) => {res.send("Message for testing!")});
