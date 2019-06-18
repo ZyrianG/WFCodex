@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var Warframes = sequelize.define('Warframes', {
     name: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     prime: {
