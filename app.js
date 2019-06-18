@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
 models.sequelize
     .authenticate()
     .then(() => {
-        console.log('Connection has been established successfully.');
+        console.log(`Connection has been established successfully on port ${CONFIG.port}`);
     })
     .catch(err => {
         console.log('Unable to connect to the database.', err);
