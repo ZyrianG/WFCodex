@@ -67,11 +67,13 @@ export class WarframesService {
     return Observable.of({...answer});
   }
 
-  save(warframe: IWarframe): Observable<number> {
+  save(warframe: IWarframe): Observable<IWarframe | number[]> {
     if (warframe.id) {
-      return this.update(warframe);
+      return this.http.put<number[]>(`http://localhost:5000/warframes`, warframe);
+      // return this.update(warframe);
     } else {
-      return this.create(warframe);
+      return this.http.post<number[]>(`http://localhost:5000/warframes`, warframe);
+      // return this.create(warframe);
     }
   }
 
