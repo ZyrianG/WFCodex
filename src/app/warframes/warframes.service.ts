@@ -23,6 +23,8 @@ export const emptyWarframe: IWarframe = {
 @Injectable()
 export class WarframesService {
 
+  apiURL = 'https://localhost:5000/warframes';
+
   items: IWarframe[] = [
     {
       id: 1,
@@ -47,9 +49,7 @@ export class WarframesService {
     },
   ];
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) { }
 
   get(query: string): Observable<HttpResponse<IWarframe[]>> {
     query = query.toLowerCase();
@@ -69,10 +69,10 @@ export class WarframesService {
 
   save(warframe: IWarframe): Observable<IWarframe | number[]> {
     if (warframe.id) {
-      return this.http.put<number[]>(`http://localhost:5000/warframes`, warframe);
+      return this.http.put<number[]>(`${this.apiURL}`, warframe);
       // return this.update(warframe);
     } else {
-      return this.http.post<number[]>(`http://localhost:5000/warframes`, warframe);
+      return this.http.post<number[]>(`${this.apiURL}`, warframe);
       // return this.create(warframe);
     }
   }
