@@ -67,28 +67,36 @@ export class WarframesService {
     return Observable.of({...answer});
   }
 
-  save(warframe: IWarframe): Observable<IWarframe | number[]> {
+  save(warframe: IWarframe): Observable<number> {
     if (warframe.id) {
-      return this.http.put<number[]>(`${this.apiURL}`, warframe);
-      // return this.update(warframe);
+      return this.update(warframe);
     } else {
-      return this.http.post<number[]>(`${this.apiURL}`, warframe);
-      // return this.create(warframe);
+      return this.create(warframe);
     }
   }
 
-  private update(warframe: IWarframe): Observable<number> {
-    const warframeToUpdate = this.items.find((item) => item.id === warframe.id);
-    warframeToUpdate.Name = warframe.Name;
-    return Observable.of(warframe.id);
+  update(warframe: IWarframe): Observable<any> {
+    return this.http.put(`${this.apiURL}`, warframe);
   }
 
-  private create(warframe: IWarframe): Observable<number> {
-    const warframeIds = this.items.map((item) => item.id);
-    const nextwarframeId = Math.max(...warframeIds) + 1;
-    warframe.id = nextwarframeId;
-    this.items.push(warframe);
-    return Observable.of(warframe.id);
+  create(warframe: IWarframe): Observable<number> {
+    return this.http.post<number>(`${this.apiURL}`, warframe);
   }
+
+
+
+  // private update(warframe: IWarframe): Observable<number> {
+  //   const warframeToUpdate = this.items.find((item) => item.id === warframe.id);
+  //   warframeToUpdate.Name = warframe.Name;
+  //   return Observable.of(warframe.id);
+  // }
+
+  // private create(warframe: IWarframe): Observable<number> {
+  //   const warframeIds = this.items.map((item) => item.id);
+  //   const nextwarframeId = Math.max(...warframeIds) + 1;
+  //   warframe.id = nextwarframeId;
+  //   this.items.push(warframe);
+  //   return Observable.of(warframe.id);
+  // }
 
 }
