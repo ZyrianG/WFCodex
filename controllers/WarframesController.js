@@ -46,7 +46,7 @@ const create = async (req, res) => {
     // [err, session] = await to(isUnique(warframeInfo.Name));
     // if (err) return ReE(res, err, 422);
 
-    [err, warframe] = await to(Warframes.create(warframeInfo))
+    [err, warframe] = await to(Warframes.create(warframeInfo));
     if (err) return ReE(res, err, 422);
 
     [err, session] = await to(warframe.save());

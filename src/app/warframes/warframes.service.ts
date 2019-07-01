@@ -87,12 +87,12 @@ export class WarframesService {
     return Observable.of({...answer});
   }
 
-  pullData(warframes: IWarframe[]) {
-    return this.http.put(`${this.apiURL}`, warframes)
-    .subscribe(response => {
-      console.log(response);
-    });
-  }
+  // pullData(warframes: IWarframe[]) {
+  //   return this.http.put(`${this.apiURL}`, warframes)
+  //   .subscribe(response => {
+  //     console.log(response);
+  //   });
+  // }
 
   // private update(warframe: IWarframe): Observable<number> {
   //   const warframeToUpdate = this.items.find((item) => item.id === warframe.id);

@@ -19,13 +19,23 @@ export class WarframeEditComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        const id = +this.route.snapshot.paramMap.get('warframeId');
+        let id: string | number = this.route.snapshot.paramMap.get('warframeId');
 
+        // tslint:disable-next-line:radix
+        id = isNaN(parseInt(id)) ? 0 : parseInt(id);
         if (id) {
             this.warframesService.getById(id)
                 .subscribe(
                   (success) => this.warframe = success,
                 );
+        } else {
+            this.warframe = {
+                id: 0,
+                Name: '',
+                Prime: 0,
+                createdAt: new Date(),
+                updatedAt: null,
+            };
         }
     }
 
