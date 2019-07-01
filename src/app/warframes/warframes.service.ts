@@ -51,22 +51,6 @@ export class WarframesService {
 
   constructor(private http: HttpClient) { }
 
-  get(query: string): Observable<HttpResponse<IWarframe[]>> {
-    query = query.toLowerCase();
-    const filteredItems = this.items.filter((item) => {
-      return item.Name.toLowerCase().includes(query);
-    });
-    const answer = new HttpResponse({
-      body: [...filteredItems],
-    });
-    return Observable.of(answer);
-  }
-
-  getById(id: number): Observable<IWarframe> {
-    const answer = this.items.find((item) => item.id === id);
-    return Observable.of({...answer});
-  }
-
   save(warframe: IWarframe): Observable<number> {
     if (warframe.id) {
       return this.update(warframe);
@@ -83,7 +67,32 @@ export class WarframesService {
     return this.http.post<number>(`${this.apiURL}`, warframe);
   }
 
+  getAll(): Observable<IWarframe[]> {
+    return this.http.get<IWarframe[]>(`${this.apiURL}`);
+  }
 
+  get(query: string): Observable<HttpResponse<IWarframe[]>> {
+    query = query.toLowerCase();
+    const filteredItems = this.items.filter((item) => {
+      return item.Name.toLowerCase().includes(query);
+    });
+    const answer = new HttpResponse({
+      body: [...filteredItems],
+    });
+    return Observable.of(answer);
+  }
+
+  getById(id: number): Observable<IWarframe> {
+    const answer = this.items.find((item) => item.id === id);
+    return Observable.of({...answer});
+  }
+
+  pullData(warframes: IWarframe[]) {
+    return this.http.put(`${this.apiURL}`, warframes)
+    .subscribe(response => {
+      console.log(response);
+    });
+  }
 
   // private update(warframe: IWarframe): Observable<number> {
   //   const warframeToUpdate = this.items.find((item) => item.id === warframe.id);

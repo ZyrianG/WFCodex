@@ -13,7 +13,7 @@ export class WarframesComponent implements OnInit {
     warframes: any[];
 
     constructor(
-        private waframesService: WarframesService,
+        private warframesService: WarframesService,
         private router: Router,
     ) { }
 
@@ -22,7 +22,7 @@ export class WarframesComponent implements OnInit {
     }
 
     getWarframes(query = ''): void {
-        this.waframesService.get(query).subscribe(
+        this.warframesService.get(query).subscribe(
             (answer) => {
                 this.warframes = answer.body;
             },
@@ -35,5 +35,9 @@ export class WarframesComponent implements OnInit {
 
     goToAdd(): void {
         this.router.navigate(['warframes/add']);
+    }
+
+    goSyncData(): void {
+        this.warframesService.pullData(this.warframes);
     }
 }

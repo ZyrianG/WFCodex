@@ -6,6 +6,7 @@ import { MatButtonModule, MatCheckboxModule, MatIconModule, MatExpansionModule, 
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -30,6 +31,7 @@ const matModules = [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     matModules,
     WarframesModule,
     AppRoutingModule,
