@@ -1,9 +1,21 @@
 <div class="row">
     <div class="col-md-4">
-        <h2 *ngIf="warframe.id">{{ warframe.Name }}</h2>
+        <h2 *ngIf="warframe.id">
+            <h2><strong>Details</strong></h2>
+            <ul>
+                <li>Mastery Rank</li>
+                <li>Health</li>
+                <li>Shield</li>
+                <li>Armor</li>
+                <li>Energy</li>
+                <li>Sprint Speed</li>
+                <li>Polarities</li>
+            </ul>
+
+        </h2>
     </div>
 </div>
 
-<button class="btn btn-primary" (click)="goToAdd()">Save</button>
-<button class="btn btn-danger">Delete</button>
-<button class="btn btn-info" (click)="backToWarframes()">Cancel</button>
+<button class="btn btn-primary btn-sm" (click)="goToAdd()">Edit</button>
+<button class="btn btn-danger btn-sm">Delete</button>
+<button class="btn btn-info btn-sm" (click)="backToWarframes()">Cancel</button>

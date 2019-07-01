@@ -5,14 +5,18 @@ import { WarframeRoutingModule } from './warframes-routing.module';
 import { WarframesService } from './warframes.service';
 import { CommonModule } from '@angular/common';
 import { WarframeDetailsComponent } from './warframe-detail/warframe-detail.component';
+import { WarframeEditComponent } from './warframe-edit/warframe-edit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule ({
     declarations: [
         WarframesComponent,
         WarframeDetailsComponent,
+        WarframeEditComponent,
     ],
     imports: [
         CommonModule,
+        FormsModule,
         WarframeRoutingModule,
     ],
 })
