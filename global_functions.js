@@ -4,7 +4,7 @@ to = function (promise) { // global function that will help us handle promise re
   return promise
     .then(data => {
       return [null, data];
-    }).catch(err => [pe(err)])
+    }).catch(err => [pe(err)]);
 };
 
 TE = function(err_message, log) { // Throw error

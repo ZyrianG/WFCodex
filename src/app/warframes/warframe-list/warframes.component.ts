@@ -21,10 +21,10 @@ export class WarframesComponent implements OnInit {
         this.getWarframes();
     }
 
-    getWarframes(query = ''): void {
-        this.warframesService.get(query).subscribe(
+    getWarframes(): void {
+        this.warframesService.getAll().subscribe(
             (answer) => {
-                this.warframes = answer.body;
+                this.warframes = answer;
             },
         );
     }

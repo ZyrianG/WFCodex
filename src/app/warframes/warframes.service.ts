@@ -5,16 +5,16 @@ import 'rxjs/add/observable/of';
 
 export interface IWarframe {
   id: number;
-  Name: string;
-  Prime: number;
+  name: string;
+  prime: number;
   createdAt: Date;
   updatedAt: Date;
 }
 
 export const emptyWarframe: IWarframe = {
   id: 0,
-  Name: '',
-  Prime: 0,
+  name: '',
+  prime: 0,
   createdAt: null,
   updatedAt: null,
 };
@@ -23,35 +23,35 @@ export const emptyWarframe: IWarframe = {
 @Injectable()
 export class WarframesService {
 
-  apiURL = 'https://localhost:5000/warframes';
+  apiURL = 'http://localhost:5000/warframes';
 
-  items: IWarframe[] = [
-    {
-      id: 1,
-      Name: 'Ash',
-      Prime: 1,
-      createdAt: new Date(),
-      updatedAt: null,
-    },
-    {
-      id: 2,
-      Name: 'Atlas',
-      Prime: 0,
-      createdAt: new Date(),
-      updatedAt: null,
-    },
-    {
-      id: 3,
-      Name: 'Banshee',
-      Prime: 1,
-      createdAt: new Date(),
-      updatedAt: null,
-    },
-  ];
+  // items: IWarframe[] = [
+  //   {
+  //     id: 1,
+  //     name: 'Ash',
+  //     prime: 1,
+  //     createdAt: new Date(),
+  //     updatedAt: null,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Atlas',
+  //     prime: 0,
+  //     createdAt: new Date(),
+  //     updatedAt: null,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Banshee',
+  //     prime: 1,
+  //     createdAt: new Date(),
+  //     updatedAt: null,
+  //   },
+  // ];
 
   constructor(private http: HttpClient) { }
 
-  save(warframe: IWarframe): Observable<number> {
+  save(warframe: IWarframe): Observable<IWarframe> {
     if (warframe.id) {
       return this.update(warframe);
     } else {
@@ -59,33 +59,34 @@ export class WarframesService {
     }
   }
 
-  update(warframe: IWarframe): Observable<any> {
-    return this.http.put(`${this.apiURL}`, warframe);
+  update(warframe: IWarframe): Observable<IWarframe> {
+    return this.http.put<IWarframe>(`${this.apiURL}/${warframe.id}`, warframe);
   }
 
-  create(warframe: IWarframe): Observable<number> {
-    return this.http.post<number>(`${this.apiURL}`, warframe);
+  create(warframe: IWarframe): Observable<IWarframe> {
+    return this.http.post<IWarframe>(`${this.apiURL}`, warframe);
   }
 
   getAll(): Observable<IWarframe[]> {
     return this.http.get<IWarframe[]>(`${this.apiURL}`);
   }
 
-  get(query: string): Observable<HttpResponse<IWarframe[]>> {
-    query = query.toLowerCase();
-    const filteredItems = this.items.filter((item) => {
-      return item.Name.toLowerCase().includes(query);
-    });
-    const answer = new HttpResponse({
-      body: [...filteredItems],
-    });
-    return Observable.of(answer);
+  getById(id: number): Observable<IWarframe> {
+    return this.http.get<IWarframe>(`${this.apiURL}/${id}`);
+    // const answer = this.items.find((item) => item.id === id);
+    // return Observable.of({...answer});
   }
 
-  getById(id: number): Observable<IWarframe> {
-    const answer = this.items.find((item) => item.id === id);
-    return Observable.of({...answer});
-  }
+  // get(query: string): Observable<HttpResponse<IWarframe[]>> {
+  //   query = query.toLowerCase();
+  //   const filteredItems = this.items.filter((item) => {
+  //     return item.name.toLowerCase().includes(query);
+  //   });
+  //   const answer = new HttpResponse({
+  //     body: [...filteredItems],
+  //   });
+  //   return Observable.of(answer);
+  // }
 
   // pullData(warframes: IWarframe[]) {
   //   return this.http.put(`${this.apiURL}`, warframes)

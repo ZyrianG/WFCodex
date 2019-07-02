@@ -19,7 +19,7 @@ export class WarframeStatsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        const id = +this.route.snapshot.paramMap.get('warframeId');
+        const id = +this.route.snapshot.paramMap.getAll('warframeId');
 
         if (id) {
             this.warframesService.getById(id)

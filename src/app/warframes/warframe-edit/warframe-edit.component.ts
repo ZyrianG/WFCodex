@@ -31,8 +31,8 @@ export class WarframeEditComponent implements OnInit {
         } else {
             this.warframe = {
                 id: 0,
-                Name: '',
-                Prime: 0,
+                name: '',
+                prime: 0,
                 createdAt: new Date(),
                 updatedAt: null,
             };
@@ -43,13 +43,17 @@ export class WarframeEditComponent implements OnInit {
         this.warframesService.save(this.warframe)
         .subscribe(
             (success) => {
-                this.backToDetails();
+                this.backToWarframes();
             }
         );
     }
 
     backToDetails(): void {
         this.router.navigateByUrl(`/warframes/${this.warframe.id}`);
+    }
+
+    backToWarframes(): void {
+        this.router.navigateByUrl(`/warframes`);
     }
 
 }
