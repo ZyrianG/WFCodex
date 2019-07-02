@@ -4,11 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { IWarframe, emptyWarframe, WarframesService } from '../warframes.service';
 
 @Component ({
-    selector: 'app-warframe-detail',
-    templateUrl: './warframe-detail.component.html',
-    styleUrls: ['./warframe-detail.component.css']
+    selector: 'app-warframe-stats',
+    templateUrl: './warframe-stats.component.html',
+    styleUrls: ['./warframe-stats.component.css']
 })
-export class WarframeDetailsComponent implements OnInit {
+export class WarframeStatsComponent implements OnInit {
 
     warframe: IWarframe = {...emptyWarframe};
 
