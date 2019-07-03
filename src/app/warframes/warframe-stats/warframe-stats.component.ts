@@ -42,4 +42,13 @@ export class WarframeStatsComponent implements OnInit {
         this.router.navigate([`warframes`]);
     }
 
+    delete(): void {
+        this.warframesService.delete(this.warframe)
+        .subscribe(
+            (success) => {
+                this.backToWarframes();
+            }
+        );
+    }
+
 }

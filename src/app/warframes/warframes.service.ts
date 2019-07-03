@@ -75,8 +75,8 @@ export class WarframesService {
     return this.http.get<IWarframe>(`${this.apiURL}/${id}`);
   }
 
-  delete(id: number): Observable<IWarframe> {
-    return this.http.delete<IWarframe>(`${this.apiURL}/${id}`);
+  delete(warframe: IWarframe): Observable<number[]> {
+    return this.http.delete<number[]>(`${this.apiURL}`);
   }
 
   // get(query: string): Observable<HttpResponse<IWarframe[]>> {

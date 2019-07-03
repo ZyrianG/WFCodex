@@ -56,7 +56,7 @@ const create = async (req, res) => {
 }
 module.exports.create = create;
 
-const update = async function (req, res) {
+const update = async (req, res) => {
   let err, warframe, data;
   data = req.body;
 
@@ -66,28 +66,26 @@ const update = async function (req, res) {
     }
   }));
 
-  if (err) ReE(res, err, 422);
+  if (err) return ReE(res, err, 422);
 
   return ReS(res, warframe, 201);
 }
 module.exports.update = update;
 
-const remove = async (res, req) => {
-    let warframeId = req.params.warframeId;
-    let err, warframe;
+const remove = async (req, res) => {
+    let err, warframe, data;
+    warframe = req.warframe;
+    data = req.data;
 
-    [err, warframe] = await to(Warframes.find({
-        where : {
-            id : warframeId
+    [err, warframe] = await to(Warframes.destroy({
+        where: {
+            id: data.id
         }
     }));
+    
+    if (err) return ReE(res, {message: `Warframe does not exist.`}, 422);
 
-    [err, warframe] = await to(warframe.destroy());
-    if (err) return ReE(res, 'Error occured trying to delete the Warframe');
-
-    return ReS(res, {
-        message: 'Deleted Warframe'
-    }, 204);
+    return ReS(res, {message: `Warframe successfully deleted.`}, 204);
 
 }
 module.exports.remove = remove;

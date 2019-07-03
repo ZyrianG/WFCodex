@@ -40,7 +40,7 @@ models.sequelize
 
 if (CONFIG.app === 'dev') {
     models.sequelize.sync({
-        force: true // drops all tables then recreates them
+        force: false // true drops all tables then recreates them
     });
 }
 
