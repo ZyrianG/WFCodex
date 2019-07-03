@@ -77,6 +77,10 @@ export class WarframesService {
     // return Observable.of({...answer});
   }
 
+  delete(id: number): Observable<IWarframe> {
+    return this.http.delete<IWarframe>(`${this.apiURL}/${id}/edit`);
+  }
+
   // get(query: string): Observable<HttpResponse<IWarframe[]>> {
   //   query = query.toLowerCase();
   //   const filteredItems = this.items.filter((item) => {

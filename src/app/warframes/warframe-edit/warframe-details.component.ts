@@ -4,11 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { IWarframe, emptyWarframe, WarframesService } from '../warframes.service';
 
 @Component ({
-    selector: 'app-warframe-edit',
-    templateUrl: './warframe-edit.component.html',
-    styleUrls: ['./warframe-edit.component.css']
+    selector: 'app-warframe-details',
+    templateUrl: './warframe-details.component.html',
+    styleUrls: ['./warframe-details.component.css']
 })
-export class WarframeEditComponent implements OnInit {
+export class WarframeDetailsComponent implements OnInit {
 
     warframe: IWarframe = {...emptyWarframe};
 
@@ -49,7 +49,7 @@ export class WarframeEditComponent implements OnInit {
     }
 
     backToDetails(): void {
-        this.router.navigateByUrl(`/warframes/${this.warframe.id}`);
+        this.router.navigateByUrl(`/warframes/stats/${this.warframe.id}`);
     }
 
     backToWarframes(): void {

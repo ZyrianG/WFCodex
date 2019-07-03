@@ -42,7 +42,4 @@ export class WarframeStatsComponent implements OnInit {
         this.router.navigateByUrl(`/warframes`);
     }
 
-    goToAdd(): void {
-        this.router.navigateByUrl(`/warframes/${this.warframe.id}/edit`);
-    }
 }

@@ -1,4 +1,5 @@
 <div class="row">
+    <!-- Stat display -->
     <div class="col-md-4">
         <h2 *ngIf="this.warframe">
             <h2><strong>{{ warframe.name }}</strong></h2>
@@ -13,9 +14,28 @@
             </ul>
 
         </h2>
+        <button class="btn btn-primary btn-sm" (click)="goToAdd()">Edit</button>
+        <button class="btn btn-danger btn-sm">Delete</button>
+        <button class="btn btn-info btn-sm" (click)="backToWarframes()">Cancel</button>
+    </div>
+
+
+    <!-- Edit stats form -->
+    <div class="col-md-4">
+        <h2 *ngIf="this.warframe">
+            <h4><strong>Edit Stats</strong></h4>
+
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" [(ngModel)]="warframe.name" placeholder="Warframe">
+
+            <label for="mastery">Mastery Rank</label>
+            <label for="mastery">0</label>
+            <input type="range" min="0" max="30" id="mastery" class="custom-range" [(ngModel)]="warframe.mastery" placeholder="0">
+
+        </h2>
+        <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
+        <button class="btn btn-danger btn-sm">Delete</button>
+        <button class="btn btn-info btn-sm" (click)="backToDetails()">Cancel</button>
     </div>
 </div>
 
-<button class="btn btn-primary btn-sm" (click)="goToAdd()">Edit</button>
-<button class="btn btn-danger btn-sm">Delete</button>
-<button class="btn btn-info btn-sm" (click)="backToWarframes()">Cancel</button>

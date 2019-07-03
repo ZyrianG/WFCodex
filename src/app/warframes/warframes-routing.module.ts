@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { WarframesComponent } from './warframe-list/warframes.component';
 import { WarframeStatsComponent } from './warframe-stats/warframe-stats.component';
-import { WarframeEditComponent } from './warframe-edit/warframe-edit.component';
+import { WarframeDetailsComponent } from './warframe-edit/warframe-details.component';
 
 const warframeRoutes: Routes = [
     { path: 'warframes', component: WarframesComponent},
-    { path: 'warframes/:warframeId', component: WarframeStatsComponent},
-    { path: 'warframes/:warframeId/edit', component: WarframeEditComponent},
+    { path: 'warframes/stats/:warframeId', component: WarframeStatsComponent},
+    { path: 'warframes/details/:warframeId', component: WarframeDetailsComponent},
 ];
 
 @NgModule ({

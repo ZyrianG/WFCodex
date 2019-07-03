@@ -16,7 +16,7 @@ const getAll = async (req, res) => {
     
     if(!warframes) return ReE(res, undefined, 404);
     
-    return res.json(warframes);
+    return ReS(res, warframes, 200);
 }
 module.exports.getAll = getAll;
 
@@ -33,7 +33,7 @@ const get = async (req, res) => {
     if (err) return ReE(res, err, 500);
     if (!warframeId) return ReE(res, undefined, 404);
 
-    return res.json(warframe);
+    return ReS(res, warframe, 200);
 }
 module.exports.get = get;
 
@@ -56,30 +56,15 @@ const create = async (req, res) => {
 }
 module.exports.create = create;
 
-const isUnique = async (name) => {
-    let warframe;
-
-    [err, warframe] = await to(findOne({
-        where: {
-            Name: name
-        }
-    }));
-    if (warframe) {
-        throw new error ('Warframe already exists!');
-    }
-}
-module.exports.isUnique = isUnique;
-
 const update = async (res, req) => {
     let err, warframe, data;
     warframe = req.warframe;
+    
     data = req.body;
-    warframe.set(data);
+    warframe.update(data);
 
     [err, warframe] = await to(warframe.save());
-    if (err) { 
-        return ReE(res, err);
-    }
+    if (err) return ReE(res, err);
 
     return res.json(warframe);
 }
@@ -104,3 +89,17 @@ const remove = async (res, req) => {
 
 }
 module.exports.remove = remove;
+
+const isUnique = async (name) => {
+    let warframe;
+
+    [err, warframe] = await to(findOne({
+        where: {
+            Name: name
+        }
+    }));
+    if (warframe) {
+        throw new error ('Warframe already exists!');
+    }
+}
+module.exports.isUnique = isUnique;

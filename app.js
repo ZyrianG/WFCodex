@@ -49,8 +49,7 @@ app.use(router);
 app.get         ('/warframes/:warframeId', warframes.get);
 app.get         ('/warframes', warframes.getAll);
 app.post        ('/warframes', warframes.create);
-app.put         ('/warframes/:warframeId', warframes.update);
-app.delete      ('/warframes/:warframeId', warframes.remove);
-app.get         ('/', (req, res) => {res.send("Hello There!")});
+app.put         ('/warframes/stats/:warframeId', warframes.update);
+app.delete      ('/warframes/stats/:warframeId', warframes.remove);
 
 module.exports = app;
