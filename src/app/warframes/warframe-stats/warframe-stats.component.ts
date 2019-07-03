@@ -39,7 +39,7 @@ export class WarframeStatsComponent implements OnInit {
     }
 
     backToWarframes(): void {
-        this.router.navigateByUrl(`/warframes`);
+        this.router.navigate([`warframes`]);
     }
 
 }

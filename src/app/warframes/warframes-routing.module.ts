@@ -7,7 +7,7 @@ import { WarframeDetailsComponent } from './warframe-edit/warframe-details.compo
 
 const warframeRoutes: Routes = [
     { path: 'warframes', component: WarframesComponent},
-    { path: 'warframes/stats/:warframeId', component: WarframeStatsComponent},
+    { path: 'warframes/:warframeId', component: WarframeStatsComponent},
     { path: 'warframes/details/:warframeId', component: WarframeDetailsComponent},
 ];
 

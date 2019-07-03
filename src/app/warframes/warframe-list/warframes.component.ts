@@ -30,11 +30,11 @@ export class WarframesComponent implements OnInit {
     }
 
     goToWarframe(warframe: IWarframe): void {
-        this.router.navigateByUrl(`/warframes/stats/${warframe.id}`);
+        this.router.navigate([`/warframes/${warframe.id}`]);
     }
 
     goToAdd(): void {
-        this.router.navigateByUrl(`/warframes/stats/0`);
+        this.router.navigate([`/warframes/add`]);
     }
 
     // goSyncData(): void {

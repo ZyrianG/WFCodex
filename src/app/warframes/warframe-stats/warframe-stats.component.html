@@ -26,16 +26,16 @@
             <h4><strong>Edit Stats</strong></h4>
 
             <label for="name">Name</label>
-            <input type="text" id="name" class="form-control" [(ngModel)]="warframe.name" placeholder="Warframe">
+            <input type="text" id="name" class="form-control" [(ngModel)]="warframe.name" placeholder="Warframe" required>
 
             <label for="mastery">Mastery Rank</label>
             <label for="mastery">0</label>
-            <input type="range" min="0" max="30" id="mastery" class="custom-range" [(ngModel)]="warframe.mastery" placeholder="0">
+            <input type="range" min="0" max="30" id="mastery" class="custom-range" placeholder="0">
 
         </h2>
         <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
         <button class="btn btn-danger btn-sm">Delete</button>
-        <button class="btn btn-info btn-sm" (click)="backToDetails()">Cancel</button>
+        <button class="btn btn-info btn-sm" (click)="backToWarframes()">Cancel</button>
     </div>
 </div>
 

@@ -43,30 +43,32 @@ const create = async (req, res) => {
 
     data = req.body;
 
-    // [err, session] = await to(isUnique(warframeInfo.Name));
+    // [err, warframe] = await to(isUnique(warframeInfo.Name));
     // if (err) return ReE(res, err, 422);
 
     [err, warframe] = await to(Warframes.create(data));
     if (err) return ReE(res, err, 422);
 
-    [err, session] = await to(warframe.save());
+    [err, warframe] = await to(warframe.save());
     if (err) return ReE(res, err, 422);
 
     return ReS(res, {warframe}, 201);
 }
 module.exports.create = create;
 
-const update = async (res, req) => {
-    let err, warframe, data;
-    warframe = req.warframe;
-    
-    data = req.body;
-    warframe.update(data);
+const update = async function (req, res) {
+  let err, warframe, data;
+  data = req.body;
 
-    [err, warframe] = await to(warframe.save());
-    if (err) return ReE(res, err);
+  [err, warframe] = await to(Warframes.update(data, {
+    where: {
+      id: data.id
+    }
+  }));
 
-    return res.json(warframe);
+  if (err) ReE(res, err, 422);
+
+  return ReS(res, warframe, 201);
 }
 module.exports.update = update;
 

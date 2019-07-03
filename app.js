@@ -49,7 +49,7 @@ app.use(router);
 app.get         ('/warframes/:warframeId', warframes.get);
 app.get         ('/warframes', warframes.getAll);
 app.post        ('/warframes', warframes.create);
-app.put         ('/warframes/stats/:warframeId', warframes.update);
-app.delete      ('/warframes/stats/:warframeId', warframes.remove);
+app.put         ('/warframes', warframes.update);
+app.delete      ('/warframes', warframes.remove);
 
 module.exports = app;

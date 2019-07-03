@@ -51,7 +51,7 @@ export class WarframesService {
 
   constructor(private http: HttpClient) { }
 
-  save(warframe: IWarframe): Observable<IWarframe> {
+  save(warframe: IWarframe): Observable<IWarframe | number[]> {
     if (warframe.id) {
       return this.update(warframe);
     } else {
@@ -59,8 +59,8 @@ export class WarframesService {
     }
   }
 
-  update(warframe: IWarframe): Observable<IWarframe> {
-    return this.http.put<IWarframe>(`${this.apiURL}/${warframe.id}`, warframe);
+  update(warframe: IWarframe): Observable<number[]> {
+    return this.http.put<number[]>(`${this.apiURL}`, warframe);
   }
 
   create(warframe: IWarframe): Observable<IWarframe> {
@@ -73,12 +73,10 @@ export class WarframesService {
 
   getById(id: number): Observable<IWarframe> {
     return this.http.get<IWarframe>(`${this.apiURL}/${id}`);
-    // const answer = this.items.find((item) => item.id === id);
-    // return Observable.of({...answer});
   }
 
   delete(id: number): Observable<IWarframe> {
-    return this.http.delete<IWarframe>(`${this.apiURL}/${id}/edit`);
+    return this.http.delete<IWarframe>(`${this.apiURL}/${id}`);
   }
 
   // get(query: string): Observable<HttpResponse<IWarframe[]>> {

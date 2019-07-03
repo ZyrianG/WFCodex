@@ -48,12 +48,12 @@ export class WarframeDetailsComponent implements OnInit {
         );
     }
 
-    backToDetails(): void {
-        this.router.navigateByUrl(`/warframes/stats/${this.warframe.id}`);
+    backToStats(): void {
+        this.router.navigateByUrl(`/warframes/${this.warframe.id}`);
     }
 
     backToWarframes(): void {
-        this.router.navigateByUrl(`/warframes`);
+        this.router.navigate([`warframes`]);
     }
 
 }
