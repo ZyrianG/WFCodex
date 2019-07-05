@@ -1,4 +1,5 @@
 const Warframes = require('../models').Warframes;
+const WarframeStats = require('../models').WarframeStats;
 
 const getAll = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');

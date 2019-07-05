@@ -4,6 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     health: {
       type: DataTypes.INTEGER,
     },
+    shield: {
+      type: DataTypes.INTEGER,
+    },
     armor: {
       type: DataTypes.INTEGER,
     },

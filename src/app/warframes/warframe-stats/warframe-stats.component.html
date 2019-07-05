@@ -33,15 +33,31 @@
 
       <label for="name">Name</label>
       <input type="text" id="name" class="form-control" [(ngModel)]="warframe.name" placeholder="Warframe" required />
-
+   
+      
       <label for="mastery">Mastery Rank</label>
-      <label for="mastery">0</label>
-      <input type="range" min="0" max="30" id="mastery" class="custom-range" placeholder="0" />
+      <input type="number" min="0" max="30" id="mastery" class="form-control" placeholder="Mastery" />
+      
+      <label for="health">Health</label>
+      <input type="number" id="health" class="form-control" placeholder="Health" required />
+      
+      <label for="shield">Shield</label>
+      <input type="number" id="shield" class="form-control" placeholder="Shield" required />
+      
+      <label for="armor">Armor</label>
+      <input type="number" id="armor" class="form-control" placeholder="Armor" required />
+      
+      <label for="energy">Energy</label>
+      <input type="number" id="energy" class="form-control" placeholder="Energy" required />
+      
+      <label for="sprint">Sprint Speed</label>
+      <input type="number" id="sprint" class="form-control" placeholder="Sprint Speed" required />
+
     </h2>
     <div style="height: 3rem" class="align-top">
       <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
       <!-- <button class="btn btn-danger btn-sm" (click)="delete()">Delete</button> -->
-      <button class="btn btn-info btn-sm" (click)="backToWarframes()">
+      <button class="btn btn-info btn-sm" (click)="toggleEdit()">
         Cancel
       </button>
     </div>
