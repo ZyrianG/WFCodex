@@ -1,51 +1,58 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark text-uppercase">
   <a class="navbar-brand nav-link" routerLink="/home">WFCodex</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContent"
+    aria-controls="navContent" aria-expanded="true" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div>
+    <div class="navbar-brand collapse navbar-collapse" id="navContent">
 
-  <button mat-button [matMenuTriggerFor]="basics">Basics</button>
+      <button class="border border-light rounded" mat-button [matMenuTriggerFor]="basics">Basics</button>
 
-  <mat-menu #basics="matMenu" [overlapTrigger]="false">
-    <button mat-menu-item class="nav-link" routerLink="/warframes">Warframes</button>
-    <button mat-menu-item [matMenuTriggerFor]="weapons" class="nav-link" routerLink="/weapons">Weapons</button>
-  </mat-menu>
+      <mat-menu #basics="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item class="nav-link" routerLink="/warframes">Warframes</button>
+        <button mat-menu-item [matMenuTriggerFor]="weapons" class="nav-link" routerLink="/weapons">Weapons</button>
+      </mat-menu>
 
-  <!-- <mat-menu #warframes="matMenu" xPosition="after">
+      <!-- <mat-menu #warframes="matMenu" xPosition="after">
     <ng-container *ngFor="let warframe of warframes">
       <button mat-menu-item [matMenuTriggerFor]="sub_menu">{{ warframe }}</button>
     </ng-container>
   </mat-menu> -->
-  
 
-  <mat-menu #sub_menu="matMenu" xPosition="after">
+
+      <!-- <mat-menu #sub_menu="matMenu" xPosition="after">
     <button mat-menu-item>Prime</button>
-  </mat-menu>
+  </mat-menu> -->
 
-  <mat-menu #weapons="matMenu" xPosition="after">
-    <button mat-menu-item>Primary</button>
-    <button mat-menu-item>Secondary</button>
-    <button mat-menu-item>Melee</button>
-  </mat-menu>
+      <mat-menu #weapons="matMenu" xPosition="after">
+        <button mat-menu-item>Primary</button>
+        <button mat-menu-item>Secondary</button>
+        <button mat-menu-item>Melee</button>
+      </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="advanced">Advanced</button>
+      <button class="border border-light rounded" mat-button [matMenuTriggerFor]="advanced">Advanced</button>
 
-  <mat-menu #advanced="matMenu" [overlapTrigger]="false">
-    <button mat-menu-item>Mastery</button>
-    <button mat-menu-item>Focus</button>
-    <button mat-menu-item>Clan</button>
-  </mat-menu>
+      <mat-menu #advanced="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item>Mastery</button>
+        <button mat-menu-item>Focus</button>
+        <button mat-menu-item>Clan</button>
+      </mat-menu>
+    </div>
+
   </div>
 
   <div class="collapse navbar-collapse" id="navContent">
-    <form class="form-inline my-2 my-lg-2">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+  <form class="form-inline my-2 my-lg-2">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
   </div>
 </nav>
 <div class="router container">
-  <router-outlet></router-outlet>
+  <div class="col-md-12">
+    <br>
+    <router-outlet></router-outlet>
+  </div>
 </div>
