@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     warframeid: {
       type: DataTypes.INTEGER,
+      unique: true,
     },
   }, {});
 

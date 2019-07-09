@@ -25,12 +25,14 @@ const create = async (req, res) => {
 module.exports.create = create;
 
 const update = async (req, res) => {
-    let err, stat, statInfo;
+    let err, stat, statInfo, warframeId;
+    warframeId = req.params.warframeId;
     statInfo = req.body;
+    statInfo.warframeid = warframeId;
 
     [err, stat] = await to(WarframeStats.update(statInfo, {
         where: {
-          id: statInfo.id
+          warframeid: warframeId
         }
       }));
     
