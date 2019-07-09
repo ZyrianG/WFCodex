@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     sprintspeed: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2),
     },
     warframeid: {
       type: DataTypes.INTEGER,
