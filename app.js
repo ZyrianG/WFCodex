@@ -5,6 +5,7 @@ const express = require('express');
 const models = require('./models');
 const bodyParser = require('body-parser');
 const warframes = require('./controllers/WarframesController');
+const warframeStats = require('./controllers/WarframeStatsController');
 const router = express.Router();
 
 const app = express();
@@ -51,5 +52,7 @@ app.get         ('/warframes', warframes.getAll);
 app.post        ('/warframes', warframes.create);
 app.put         ('/warframes', warframes.update);
 app.delete      ('/warframes', warframes.remove);
+
+app.post        ('/warframestats/:warframeId', warframeStats.create);
 
 module.exports = app;

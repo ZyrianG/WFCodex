@@ -6,7 +6,7 @@
         <strong>{{ warframe.name }}</strong>
       </h2>
       <ul>
-        <li>Mastery Rank</li>
+        <li>Mastery Rank {{ warframe.mastery }}</li>
         <li>Health</li>
         <li>Shield</li>
         <li>Armor</li>
@@ -36,7 +36,7 @@
    
       
       <label for="mastery">Mastery Rank</label>
-      <input type="number" min="0" max="30" id="mastery" class="form-control" placeholder="Mastery" />
+      <input type="number" min="0" max="30" id="mastery" class="form-control" [(ngModel)]="warframe.mastery" placeholder="Mastery" />
       
       <label for="health">Health</label>
       <input type="number" id="health" class="form-control" placeholder="Health" required />

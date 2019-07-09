@@ -27,8 +27,11 @@ const get = async (req, res) => {
     let err, warframe;
     
     [err, warframe] = await to(Warframes.find({
-        where: {
-            id : warframeId
+        include: [{
+            model: WarframeStats
+        }],
+        where: { 
+            id : warframeId 
         }
     }));
     if (err) return ReE(res, err, 500);

@@ -1,6 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var WarframeStats = sequelize.define('WarframeStats', {
+    mastery: {
+      type: DataTypes.INTEGER,
+      validate: { min: 0, max: 30 },
+    },
     health: {
       type: DataTypes.INTEGER,
     },
