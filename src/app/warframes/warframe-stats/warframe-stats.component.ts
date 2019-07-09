@@ -10,7 +10,7 @@ import { IWarframe, emptyWarframe, WarframesService } from '../warframes.service
 })
 export class WarframeStatsComponent implements OnInit {
 
-    warframe: IWarframe = {...emptyWarframe};
+    warframe: IWarframe;
     isVisible = false;
 
     constructor (
@@ -43,17 +43,16 @@ export class WarframeStatsComponent implements OnInit {
         this.router.navigate([`warframes`]);
     }
 
-    delete(): void {
-        this.warframesService.delete(this.warframe)
-        .subscribe(
-            (success) => {
-                this.backToWarframes();
-            }
-        );
-    }
-
     toggleEdit(): void {
         this.isVisible = !this.isVisible;
     }
 
+    // delete(): void {
+    //     this.warframesService.delete(this.warframe)
+    //     .subscribe(
+    //         (success) => {
+    //             this.backToWarframes();
+    //         }
+    //     );
+    // }
 }

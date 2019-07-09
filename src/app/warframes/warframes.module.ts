@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { WarframesComponent } from './warframe-list/warframes.component';
+import { WarframeComponent } from './warframe/warframe.component';
 import { WarframeRoutingModule } from './warframes-routing.module';
 import { WarframesService } from './warframes.service';
 import { CommonModule } from '@angular/common';
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule ({
     declarations: [
         WarframesComponent,
+        WarframeComponent,
         WarframeStatsComponent,
         WarframeDetailsComponent,
     ],

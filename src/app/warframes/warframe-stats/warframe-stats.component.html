@@ -1,10 +1,9 @@
-<div class="row">
+
   <!-- Stat display -->
-  <div class="col-md-4 rounded bg-light border border-dark" *ngIf="!isVisible">
-    <h2 *ngIf="this.warframe">
-      <h2>
-        <strong>{{ warframe.name }}</strong>
-      </h2>
+  <div *ngIf="!isVisible">
+    <h2 *ngIf="this.warframe"> 
+      <strong>{{ warframe.name }}</strong>
+    </h2>
       <ul>
         <li>Mastery Rank</li>
         <p>{{ warframe.WarframeStat.mastery }}</p>
@@ -20,26 +19,19 @@
         <p>{{ warframe.WarframeStat.sprintspeed }}</p>
         <li>Polarities</li>
       </ul>
-    </h2>
     <div style="height: 3rem" class="align-top">
       <button class="btn btn-primary btn-sm" (click)="toggleEdit()">
         Edit
       </button>
       <!-- <button class="btn btn-danger btn-sm">Delete</button> -->
-      <button class="btn btn-info btn-sm" (click)="backToWarframes()">
-        Cancel
-      </button>
     </div>
   </div>
 
   <!-- Edit stats form -->
-  <div class="col-md-4 rounded bg-light border border-dark" *ngIf="isVisible">
+  <div *ngIf="isVisible">
     <h2 *ngIf="this.warframe">
-      <h4><strong>Edit Stats</strong></h4>
-
-      <label for="name">Name</label>
-      <input type="text" id="name" class="form-control" [(ngModel)]="warframe.name" placeholder="Warframe" required />
-   
+      <strong>Edit {{ warframe.name }}</strong>
+    </h2>
       
       <label for="mastery">Mastery Rank</label>
       <input type="number" min="0" max="30" id="mastery" class="form-control" [(ngModel)]="warframe.WarframeStat.mastery" placeholder="Mastery" />
@@ -59,7 +51,6 @@
       <label for="sprint">Sprint Speed</label>
       <input type="number" step=".05" min="1" max="3" id="sprint" class="form-control" [(ngModel)]="warframe.WarframeStat.sprintspeed" placeholder="Sprint Speed" required />
 
-    </h2>
     <div style="height: 3rem" class="align-top">
       <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
       <!-- <button class="btn btn-danger btn-sm" (click)="delete()">Delete</button> -->
@@ -68,4 +59,3 @@
       </button>
     </div>
   </div>
-</div>
