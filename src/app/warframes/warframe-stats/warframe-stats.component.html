@@ -1,10 +1,10 @@
 
   <!-- Stat display -->
   <div *ngIf="!isVisible">
-    <h2 *ngIf="this.warframe"> 
-      <strong>{{ warframe.name }}</strong>
-    </h2>
-      <ul>
+    <div *ngIf="this.warframe"> 
+      <h2><strong>{{ warframe.name }}</strong></h2> 
+
+      <ul>  
         <li>Mastery Rank</li>
         <p>{{ warframe.WarframeStat.mastery }}</p>
         <li>Health</li>
@@ -19,6 +19,7 @@
         <p>{{ warframe.WarframeStat.sprintspeed }}</p>
         <li>Polarities</li>
       </ul>
+    </div>
     <div style="height: 3rem" class="align-top">
       <button class="btn btn-primary btn-sm" (click)="toggleEdit()">
         Edit
@@ -29,10 +30,9 @@
 
   <!-- Edit stats form -->
   <div *ngIf="isVisible">
-    <h2 *ngIf="this.warframe">
-      <strong>Edit {{ warframe.name }}</strong>
-    </h2>
-      
+    <div *ngIf="this.warframe">
+      <h2><strong>Edit {{ warframe.name }}</strong></h2>
+
       <label for="mastery">Mastery Rank</label>
       <input type="number" min="0" max="30" id="mastery" class="form-control" [(ngModel)]="warframe.WarframeStat.mastery" placeholder="Mastery" />
       
@@ -50,7 +50,8 @@
       
       <label for="sprint">Sprint Speed</label>
       <input type="number" step=".05" min="1" max="3" id="sprint" class="form-control" [(ngModel)]="warframe.WarframeStat.sprintspeed" placeholder="Sprint Speed" required />
-
+      
+    </div>
     <div style="height: 3rem" class="align-top">
       <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
       <!-- <button class="btn btn-danger btn-sm" (click)="delete()">Delete</button> -->

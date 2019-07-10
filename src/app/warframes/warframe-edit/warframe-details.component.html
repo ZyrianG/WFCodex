@@ -1,23 +1,14 @@
 <!-- Description display -->
 <div *ngIf="!isVisible">
-    <h2 *ngIf="this.warframe"> 
-        <strong>More info for {{ warframe.name }}</strong>
-    </h2>
+    <div *ngIf="this.warframe"> 
+        <h2><strong>More info for {{ warframe.name }}</strong></h2>
+    
         <ul>
-            <li>Mastery Rank</li>
-            <p>{{ warframe.WarframeStat.mastery }}</p>
-            <li>Health</li>
-            <p>{{ warframe.WarframeStat.health }}</p>
-            <li>Shield</li>
-            <p>{{ warframe.WarframeStat.shield }}</p>
-            <li>Armor</li>
-            <p>{{ warframe.WarframeStat.armor }}</p>
-            <li>Energy</li>
-            <p>{{ warframe.WarframeStat.energy }}</p>
-            <li>Sprint Speed</li>
-            <p>{{ warframe.WarframeStat.sprintspeed }}</p>
-            <li>Polarities</li>
+            <li>Description</li>
+            <p>{{ warframe.name }}</p>
+
         </ul>
+    </div>
     <div style="height: 3rem" class="align-top">
         <button class="btn btn-primary btn-sm" (click)="toggleEdit()">Edit</button>
     </div>
@@ -25,28 +16,13 @@
     
 <!-- Edit description form -->
 <div *ngIf="isVisible">
-    <h2 *ngIf="this.warframe">
-        <strong>Edit {{ warframe.name }} Description</strong>
-    </h2>
-          
-        <label for="mastery">Mastery Rank</label>
-        <input type="number" min="0" max="30" id="mastery" class="form-control" [(ngModel)]="warframe.WarframeStat.mastery" placeholder="Mastery" />
-          
-        <label for="health">Health</label>
-        <input type="number" id="health" class="form-control" [(ngModel)]="warframe.WarframeStat.health" placeholder="Health" required />
-          
-        <label for="shield">Shield</label>
-        <input type="number" id="shield" class="form-control" [(ngModel)]="warframe.WarframeStat.shield" placeholder="Shield" required />
-          
-        <label for="armor">Armor</label>
-        <input type="number" id="armor" class="form-control" [(ngModel)]="warframe.WarframeStat.armor" placeholder="Armor" required />
-          
-        <label for="energy">Energy</label>
-        <input type="number" id="energy" class="form-control" [(ngModel)]="warframe.WarframeStat.energy" placeholder="Energy" required />
-          
-        <label for="sprint">Sprint Speed</label>
-        <input type="number" step=".05" min="1" max="3" id="sprint" class="form-control" [(ngModel)]="warframe.WarframeStat.sprintspeed" placeholder="Sprint Speed" required />
+    <div *ngIf="this.warframe">
+    <h2><strong>Edit {{ warframe.name }} Description</strong></h2>
     
+          
+        <label for="description">Description</label>
+        <input type="text" id="description" class="form-control" [(ngModel)]="warframe.name" placeholder="Mastery" />
+    </div>     
     <div style="height: 3rem" class="align-top">
         <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
         <button class="btn btn-info btn-sm" (click)="toggleEdit()">Cancel</button>
