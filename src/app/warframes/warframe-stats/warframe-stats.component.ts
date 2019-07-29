@@ -20,13 +20,17 @@ export class WarframeStatsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        const id = +this.route.snapshot.paramMap.getAll('warframeId');
+        let id: string | number = this.route.snapshot.paramMap.get('warframeId');
 
+        // tslint:disable-next-line:radix
+        id = isNaN(parseInt(id)) ? 0 : parseInt(id);
         if (id) {
             this.warframesService.getById(id)
                 .subscribe(
                   (success) => this.warframe = success,
                 );
+        } else {
+            this.warframe = emptyWarframe;
         }
     }
 
@@ -39,20 +43,30 @@ export class WarframeStatsComponent implements OnInit {
         );
     }
 
+    create(): void {
+        this.warframesService.save(this.warframe)
+        .subscribe(
+            (success) => {
+                this.backToWarframes();
+            }
+        );
+    }
+
     backToWarframes(): void {
         this.router.navigate([`warframes`]);
+    }
+
+    delete(): void {
+        this.warframesService.delete(this.warframe)
+        .subscribe(
+            (success) => {
+                this.backToWarframes();
+            }
+        );
     }
 
     toggleEdit(): void {
         this.isVisible = !this.isVisible;
     }
 
-    // delete(): void {
-    //     this.warframesService.delete(this.warframe)
-    //     .subscribe(
-    //         (success) => {
-    //             this.backToWarframes();
-    //         }
-    //     );
-    // }
 }

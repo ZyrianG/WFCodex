@@ -53,7 +53,7 @@ app.post        ('/warframes', warframes.create);
 app.put         ('/warframes', warframes.update);
 app.delete      ('/warframes', warframes.remove);
 
-app.post        ('/warframestats/:warframeId', warframeStats.create);
-app.put         ('/warframestats/:warframeId', warframeStats.update);
+app.post        ('/warframes/stats/:warframeId', warframeStats.create);
+app.put         ('/warframes/stats/:warframeId', warframeStats.update);
 
 module.exports = app;

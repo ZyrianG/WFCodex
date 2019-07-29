@@ -11,7 +11,6 @@ import { IWarframe, emptyWarframe, WarframesService } from '../warframes.service
 export class WarframeDetailsComponent implements OnInit {
 
     warframe: IWarframe;
-    isVisible = false;
 
     constructor (
         private warframesService: WarframesService,
@@ -30,13 +29,7 @@ export class WarframeDetailsComponent implements OnInit {
                   (success) => this.warframe = success,
                 );
         } else {
-            this.warframe = {
-                id: 0,
-                name: '',
-                prime: 0,
-                createdAt: new Date(),
-                updatedAt: null,
-            };
+            this.warframe = emptyWarframe;
         }
     }
 
@@ -44,13 +37,17 @@ export class WarframeDetailsComponent implements OnInit {
         this.warframesService.save(this.warframe)
         .subscribe(
             (success) => {
-                this.toggleEdit();
+                this.backToWarframes();
             }
         );
     }
 
-    toggleEdit(): void {
-        this.isVisible = !this.isVisible;
+    backToStats(): void {
+        this.router.navigateByUrl(`/warframes/${this.warframe.id}`);
+    }
+
+    backToWarframes(): void {
+        this.router.navigate([`warframes`]);
     }
 
 }

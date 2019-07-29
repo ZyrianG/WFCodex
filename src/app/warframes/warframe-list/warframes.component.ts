@@ -10,7 +10,7 @@ import { WarframesService, IWarframe } from '../warframes.service';
 })
 export class WarframesComponent implements OnInit {
 
-    warframes: IWarframe[];
+    warframes: any[];
 
     constructor(
         private warframesService: WarframesService,

@@ -19,7 +19,6 @@ export const emptyWarframe: IWarframe = {
   updatedAt: null,
 };
 
-// TODO CCC: hook this up to the backend
 @Injectable()
 export class WarframesService {
 

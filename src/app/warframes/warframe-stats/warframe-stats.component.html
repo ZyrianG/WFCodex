@@ -1,7 +1,17 @@
 
+<!-- Name Entry -->
+  <div *ngIf="this.warframe.id == 0">
+    <div>
+      <h2 for="name">Enter Name</h2>
+      <input type="text" required id="name" class="form-control" placeholder="Name"/>
+      <button class="btn-primary btn-sm" (click)="create()">Save</button>
+    </div>
+  </div>
+
+<div *ngIf="this.warframe.id !== 0">
   <!-- Stat display -->
   <div *ngIf="!isVisible">
-    <div *ngIf="this.warframe"> 
+    <div> 
       <h2><strong>{{ warframe.name }}</strong></h2> 
 
       <ul>  
@@ -30,7 +40,7 @@
 
   <!-- Edit stats form -->
   <div *ngIf="isVisible">
-    <div *ngIf="this.warframe">
+    <div>
       <h2><strong>Edit {{ warframe.name }}</strong></h2>
 
       <label for="mastery">Mastery Rank</label>
@@ -60,3 +70,4 @@
       </button>
     </div>
   </div>
+</div>

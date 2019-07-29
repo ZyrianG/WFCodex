@@ -10,7 +10,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class WarframeComponent implements OnInit {
 
     warframe: IWarframe;
-    isVisible = false;
 
     constructor (
         private warframesService: WarframesService,
@@ -18,7 +17,7 @@ export class WarframeComponent implements OnInit {
         private router: Router,
     ) {}
 
-    ngOnInit () {
+    ngOnInit(): void {
         const id = +this.route.snapshot.paramMap.getAll('warframeId');
 
         if (id) {
@@ -33,7 +32,4 @@ export class WarframeComponent implements OnInit {
         this.router.navigate([`warframes`]);
     }
 
-    toggleHide(): void {
-        this.isVisible = !this.isVisible;
-    }
 }
