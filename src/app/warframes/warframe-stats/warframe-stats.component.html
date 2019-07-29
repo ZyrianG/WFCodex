@@ -1,73 +1,57 @@
-
-<!-- Name Entry -->
-  <div *ngIf="this.warframe.id == 0">
-    <div>
-      <h2 for="name">Enter Name</h2>
-      <input type="text" required id="name" class="form-control" placeholder="Name"/>
-      <button class="btn-primary btn-sm" (click)="create()">Save</button>
-    </div>
+<div *ngIf="!isVisible">
+  <div> 
+    <ul>  
+      <li>Mastery Rank</li>
+      <p>{{ stat.mastery }}</p>
+      <li>Health</li>
+      <p>{{ stat.health }}</p>
+      <li>Shield</li>
+      <p>{{ stat.shield }}</p>
+      <li>Armor</li>
+      <p>{{ stat.armor }}</p>
+      <li>Energy</li>
+      <p>{{ stat.energy }}</p>
+      <li>Sprint Speed</li>
+      <p>{{ stat.sprintspeed }}</p>
+      <li>Polarities</li>
+    </ul>
   </div>
-
-<div *ngIf="this.warframe.id !== 0">
-  <!-- Stat display -->
-  <div *ngIf="!isVisible">
-    <div> 
-      <h2><strong>{{ warframe.name }}</strong></h2> 
-
-      <ul>  
-        <li>Mastery Rank</li>
-        <p>{{ warframe.WarframeStat.mastery }}</p>
-        <li>Health</li>
-        <p>{{ warframe.WarframeStat.health }}</p>
-        <li>Shield</li>
-        <p>{{ warframe.WarframeStat.shield }}</p>
-        <li>Armor</li>
-        <p>{{ warframe.WarframeStat.armor }}</p>
-        <li>Energy</li>
-        <p>{{ warframe.WarframeStat.energy }}</p>
-        <li>Sprint Speed</li>
-        <p>{{ warframe.WarframeStat.sprintspeed }}</p>
-        <li>Polarities</li>
-      </ul>
-    </div>
-    <div style="height: 3rem" class="align-top">
-      <button class="btn btn-primary btn-sm" (click)="toggleEdit()">
-        Edit
-      </button>
-      <!-- <button class="btn btn-danger btn-sm">Delete</button> -->
-    </div>
+  <div style="height: 3rem" class="align-top">
+    <button class="btn btn-primary btn-sm" (click)="toggleEdit()">
+      Edit
+    </button>
+    <!-- <button class="btn btn-danger btn-sm">Delete</button> -->
   </div>
+</div>
 
-  <!-- Edit stats form -->
-  <div *ngIf="isVisible">
-    <div>
-      <h2><strong>Edit {{ warframe.name }}</strong></h2>
+<!-- Edit stats form -->
+<div *ngIf="isVisible">
+  <div>
 
-      <label for="mastery">Mastery Rank</label>
-      <input type="number" min="0" max="30" id="mastery" class="form-control" [(ngModel)]="warframe.WarframeStat.mastery" placeholder="Mastery" />
+    <label for="mastery">Mastery Rank</label>
+    <input type="number" min="0" max="30" id="mastery" class="form-control" [(ngModel)]="stat.mastery" placeholder="Mastery" />
       
-      <label for="health">Health</label>
-      <input type="number" id="health" class="form-control" [(ngModel)]="warframe.WarframeStat.health" placeholder="Health" required />
+    <label for="health">Health</label>
+    <input type="number" id="health" class="form-control" [(ngModel)]="stat.health" placeholder="Health" required />
       
-      <label for="shield">Shield</label>
-      <input type="number" id="shield" class="form-control" [(ngModel)]="warframe.WarframeStat.shield" placeholder="Shield" required />
+    <label for="shield">Shield</label>
+    <input type="number" id="shield" class="form-control" [(ngModel)]="stat.shield" placeholder="Shield" required />
       
-      <label for="armor">Armor</label>
-      <input type="number" id="armor" class="form-control" [(ngModel)]="warframe.WarframeStat.armor" placeholder="Armor" required />
+    <label for="armor">Armor</label>
+    <input type="number" id="armor" class="form-control" [(ngModel)]="stat.armor" placeholder="Armor" required />
       
-      <label for="energy">Energy</label>
-      <input type="number" id="energy" class="form-control" [(ngModel)]="warframe.WarframeStat.energy" placeholder="Energy" required />
+    <label for="energy">Energy</label>
+    <input type="number" id="energy" class="form-control" [(ngModel)]="stat.energy" placeholder="Energy" required />
       
-      <label for="sprint">Sprint Speed</label>
-      <input type="number" step=".05" min="1" max="3" id="sprint" class="form-control" [(ngModel)]="warframe.WarframeStat.sprintspeed" placeholder="Sprint Speed" required />
+    <label for="sprint">Sprint Speed</label>
+    <input type="number" step=".05" min="1" max="3" id="sprint" class="form-control" [(ngModel)]="stat.sprintspeed" placeholder="Sprint Speed" required />
       
-    </div>
-    <div style="height: 3rem" class="align-top">
-      <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
-      <!-- <button class="btn btn-danger btn-sm" (click)="delete()">Delete</button> -->
-      <button class="btn btn-info btn-sm" (click)="toggleEdit()">
-        Cancel
-      </button>
-    </div>
+  </div>
+  <div style="height: 3rem" class="align-top">
+    <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
+    <!-- <button class="btn btn-danger btn-sm" (click)="delete()">Delete</button> -->
+    <button class="btn btn-info btn-sm" (click)="toggleEdit()">
+      Cancel
+    </button>
   </div>
 </div>

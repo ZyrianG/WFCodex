@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { WarframesModule } from './warframes/warframes.module';
 import { WarframesService } from './warframes/warframes.service';
+import { WarframeStatService } from './warframes/warframe-stats/warframe-stats.service';
 
 const matModules = [
   MatMenuModule,
@@ -39,7 +40,10 @@ const matModules = [
   exports: [
     matModules,
   ],
-  providers: [WarframesService],
+  providers: [
+    WarframesService,
+    WarframeStatService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

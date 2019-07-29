@@ -5,7 +5,7 @@ const getAll = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     let err, warframes;
     
-    var whereStatement = {};
+    let whereStatement = {};
     if (req.query.name)
         whereStatement.name = {
             $like: `%${ req.query.name }%`

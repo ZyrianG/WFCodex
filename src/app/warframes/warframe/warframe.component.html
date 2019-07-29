@@ -1,12 +1,22 @@
-<div style="height: 3rem" class="align-bottom">
-    <button class="btn btn-info btn-sm" (click)="backToWarframes()">Cancel</button>
-</div>
-
 <div class="row">
     <div class="col-md-3">
         <div class="card">
             <div class="card-body">
-                <app-warframe-stats></app-warframe-stats>
+
+                <!-- Name Entry -->
+                <div *ngIf="!this.warframe">
+                    <div>
+                    <h2 for="name">Enter Name</h2>
+                    <input type="text" required id="name" class="form-control" placeholder="Name"/>
+                    <button class="btn-primary btn-sm" (click)="create()">Save</button>
+                    </div>
+                </div>
+
+                <!-- Stat Display -->
+                <div *ngIf="this.warframe">
+                    <h2><strong>{{ warframe.name }}</strong></h2> 
+                    <app-warframe-stats></app-warframe-stats>
+                </div>
             </div>
         </div>
     </div>
@@ -17,4 +27,8 @@
             </div>
         </div>
     </div>
+</div>
+
+<div style="height: 3rem" class="align-bottom">
+    <button class="btn btn-info btn-sm" (click)="backToWarframes()">Cancel</button>
 </div>

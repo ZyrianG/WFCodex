@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { WarframeStatsComponent } from './warframe-stats/warframe-stats.component';
 import { WarframeDetailsComponent } from './warframe-details/warframe-details.component';
 import { FormsModule } from '@angular/forms';
+import { WarframeStatService } from './warframe-stats/warframe-stats.service';
 
 @NgModule ({
     declarations: [
@@ -26,7 +27,10 @@ export class WarframesModule {
     static forRoot(): any {
         return {
             ngModule: WarframesModule,
-            providers: [WarframesService],
+            providers: [
+                WarframesService,
+                WarframeStatService,
+            ],
         };
     }
 }

@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { IWarframe, emptyWarframe, WarframesService } from '../warframes.service';
+import { IFrameStat, emptyStat, WarframeStatService } from './warframe-stats.service';
 
 @Component ({
     selector: 'app-warframe-stats',
     templateUrl: './warframe-stats.component.html',
-    styleUrls: ['./warframe-stats.component.css']
 })
 export class WarframeStatsComponent implements OnInit {
 
-    warframe: IWarframe;
+    stat: IFrameStat;
     isVisible = false;
 
     constructor (
-        private warframesService: WarframesService,
+        private warframeStatService: WarframeStatService,
         private route: ActivatedRoute,
         private router: Router,
     ) {}
@@ -25,17 +24,17 @@ export class WarframeStatsComponent implements OnInit {
         // tslint:disable-next-line:radix
         id = isNaN(parseInt(id)) ? 0 : parseInt(id);
         if (id) {
-            this.warframesService.getById(id)
+            this.warframeStatService.get(id)
                 .subscribe(
-                  (success) => this.warframe = success,
+                  (success) => this.stat = success,
                 );
         } else {
-            this.warframe = emptyWarframe;
+            this.stat = emptyStat;
         }
     }
 
     save(): void {
-        this.warframesService.save(this.warframe)
+        this.warframeStatService.save(this.stat)
         .subscribe(
             (success) => {
                 this.toggleEdit();
@@ -44,7 +43,7 @@ export class WarframeStatsComponent implements OnInit {
     }
 
     create(): void {
-        this.warframesService.save(this.warframe)
+        this.warframeStatService.save(this.stat)
         .subscribe(
             (success) => {
                 this.backToWarframes();
@@ -54,15 +53,6 @@ export class WarframeStatsComponent implements OnInit {
 
     backToWarframes(): void {
         this.router.navigate([`warframes`]);
-    }
-
-    delete(): void {
-        this.warframesService.delete(this.warframe)
-        .subscribe(
-            (success) => {
-                this.backToWarframes();
-            }
-        );
     }
 
     toggleEdit(): void {

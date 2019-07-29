@@ -50,10 +50,12 @@ app.use(router);
 app.get         ('/warframes/:warframeId', warframes.get);
 app.get         ('/warframes', warframes.getAll);
 app.post        ('/warframes', warframes.create);
-app.put         ('/warframes', warframes.update);
+app.put         ('/warframes/:warframeId', warframes.update);
 app.delete      ('/warframes', warframes.remove);
 
-app.post        ('/warframes/stats/:warframeId', warframeStats.create);
-app.put         ('/warframes/stats/:warframeId', warframeStats.update);
+app.get         ('/stats/:warframeId', warframeStats.get);
+app.get         ('/stats', warframeStats.getAll);
+app.post        ('/stats', warframeStats.create);
+app.put         ('/stats/:warframeId', warframeStats.update);
 
 module.exports = app;
