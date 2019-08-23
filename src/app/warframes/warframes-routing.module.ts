@@ -9,8 +9,9 @@ import { WarframeDetailsComponent } from './warframe-details/warframe-details.co
 const warframeRoutes: Routes = [
     { path: 'warframes', component: WarframesComponent},
     { path: 'warframes/:warframeId', component: WarframeComponent},
-    { path: 'warframes/stats/:warframeId', component: WarframeStatsComponent},
-    { path: 'warframes/details/:warframeId', component: WarframeDetailsComponent},
+    { path: 'stats', component: WarframeStatsComponent },
+    { path: 'stats/:warframeId', component: WarframeStatsComponent},
+    { path: 'details/:warframeId', component: WarframeDetailsComponent},
 ];
 
 @NgModule ({
