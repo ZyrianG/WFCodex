@@ -4,7 +4,7 @@
             <div class="card-body">
 
                 <!-- Name Entry -->
-                <div *ngIf="!this.warframe">
+                <div *ngIf="this.warframe.id == 0">
                     <div>
                     <h2 for="name">Enter Name</h2>
                     <input type="text" required id="name" class="form-control" placeholder="Name"/>
@@ -13,7 +13,7 @@
                 </div>
 
                 <!-- Stat Display -->
-                <div *ngIf="this.warframe">
+                <div *ngIf="this.warframe.id != 0">
                     <h2><strong>{{ warframe.name }}</strong></h2> 
                     <app-warframe-stats></app-warframe-stats>
                 </div>
