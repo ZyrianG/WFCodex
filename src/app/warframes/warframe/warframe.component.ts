@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class WarframeComponent implements OnInit {
 
-    warframe: IWarframe;
+    warframe: IWarframe = {...emptyWarframe};
 
     constructor (
         private warframesService: WarframesService,
@@ -27,13 +27,23 @@ export class WarframeComponent implements OnInit {
                 .subscribe(
                   (success) => this.warframe = success,
                 );
-        } else {
-            this.warframe = emptyWarframe;
-        }
+        } 
+        // else {
+        //     this.warframe = emptyWarframe;
+        // }
     }
 
     backToWarframes(): void {
         this.router.navigate([`warframes`]);
+    }
+
+    create(): void {
+        this.warframesService.save(this.warframe)
+        .subscribe(
+            (success) => {
+                this.backToWarframes();
+            }
+        );
     }
 
 }

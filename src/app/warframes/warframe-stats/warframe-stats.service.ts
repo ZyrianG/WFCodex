@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
+import { WarframesService, IWarframe } from '../warframes.service';
+
 export interface IFrameStat {
     id: number;
     mastery: number;
@@ -45,7 +47,7 @@ export class WarframeStatService {
     }
 
     update(stat: IFrameStat): Observable<number[]> {
-        return this.http.put<number[]>(`${this.statURL}`, stat);
+        return this.http.put<number[]>(`${this.statURL}/${stat.warframeid}`, stat);
     }
 
     create(stat: IFrameStat): Observable<IFrameStat> {

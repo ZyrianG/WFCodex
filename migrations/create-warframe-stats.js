@@ -11,6 +11,9 @@ module.exports = {
       health: {
         type: Sequelize.INTEGER
       },
+      shield: {
+        type: Sequelize.INTEGER
+      },
       armor: {
         type: Sequelize.INTEGER
       },
