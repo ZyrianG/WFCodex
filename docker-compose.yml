@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  wfcodex:
+    container_name: codex-node-mysql
+    restart: always
+    build: .
+    ports:
+      - '80:5000'
+    links:
+      - msql
+  mysql:
+    container_name: mysql
+    image: mysql
+    ports:
+      - '3306:3306'
