@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class WarframeComponent implements OnInit {
 
     warframe: IWarframe = {...emptyWarframe};
+    editMode: boolean;
 
     constructor (
         private warframesService: WarframesService,
@@ -27,7 +28,7 @@ export class WarframeComponent implements OnInit {
                 .subscribe(
                   (success) => this.warframe = success,
                 );
-        } 
+        }
         // else {
         //     this.warframe = emptyWarframe;
         // }
@@ -44,6 +45,19 @@ export class WarframeComponent implements OnInit {
                 this.backToWarframes();
             }
         );
+    }
+
+    update(): void {
+        this.warframesService.save(this.warframe)
+        .subscribe(
+            (success) => {
+                this.toggleEdit();
+            }
+        );
+    }
+
+    toggleEdit(): void {
+        this.editMode = !this.editMode;
     }
 
 }

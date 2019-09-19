@@ -3,27 +3,38 @@
         <div class="card">
             <div class="card-body">
 
-                <!-- Name Entry -->
-                <div *ngIf="this.warframe.id == 0">
-                    <div>
+                <!-- Name Creation -->
+                <div *ngIf="this.warframe.id == 0" class="create-warframe">
                     <h2 for="name">Enter Name</h2>
                     <input type="text" required id="name" class="form-control" placeholder="Name" [(ngModel)]="warframe.name"/>
                     <button class="btn-primary btn-sm" (click)="create()">Save</button>
-                    </div>
                 </div>
 
-                <!-- Stat Display -->
-                <div *ngIf="this.warframe.id != 0">
+                <!-- Name Display -->
+                <div *ngIf="this.warframe.id != 0 && !editMode" class="display-warframe">
                     <h2><strong>{{ warframe.name }}</strong></h2> 
-                    <app-warframe-stats></app-warframe-stats>
+                    <button class="btn-primary btn-sm" (click)="toggleEdit()">Edit Name</button>
                 </div>
+
+                <!-- Edit Name -->
+                <div *ngIf="this.warframe.id != 0 && editMode" class="edit-warframe">
+                    <h2 for="name"><strong>Edit Name</strong></h2>
+                    <input type="text" required id="name" class="form-control" placeholder="Name" [(ngModel)]="warframe.name"/>
+                    <button class="btn-primary btn-sm" (click)="update()">Save</button>
+                    <button class="btn-primary btn-sm" (click)="toggleEdit()">Cancel</button>
+                </div>
+
+                <div class="stat-details">
+                    <!-- <app-warframe-stats></app-warframe-stats> -->
+                </div>
+
             </div>
         </div>
     </div>
     <div class="col-md-5">
         <div class="card">
             <div class="card-body">
-                <app-warframe-details></app-warframe-details>
+                <!-- <app-warframe-details></app-warframe-details> -->
             </div>
         </div>
     </div>

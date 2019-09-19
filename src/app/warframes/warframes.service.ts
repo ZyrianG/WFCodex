@@ -59,7 +59,7 @@ export class WarframesService {
   }
 
   update(warframe: IWarframe): Observable<number[]> {
-    return this.http.put<number[]>(`${this.apiURL}`, warframe);
+    return this.http.put<number[]>(`${this.apiURL}/${warframe.id}`, warframe);
   }
 
   create(warframe: IWarframe): Observable<IWarframe> {
