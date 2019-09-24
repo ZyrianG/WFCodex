@@ -24,30 +24,6 @@ export class WarframesService {
 
   apiURL = 'http://localhost:5000/warframes';
 
-  // items: IWarframe[] = [
-  //   {
-  //     id: 1,
-  //     name: 'Ash',
-  //     prime: 1,
-  //     createdAt: new Date(),
-  //     updatedAt: null,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Atlas',
-  //     prime: 0,
-  //     createdAt: new Date(),
-  //     updatedAt: null,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Banshee',
-  //     prime: 1,
-  //     createdAt: new Date(),
-  //     updatedAt: null,
-  //   },
-  // ];
-
   constructor(private http: HttpClient) { }
 
   save(warframe: IWarframe): Observable<IWarframe | number[]> {
