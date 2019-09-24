@@ -4,28 +4,31 @@
             <div class="card-body">
 
                 <!-- Name Creation -->
-                <div *ngIf="this.warframe.id == 0" class="create-warframe">
+                <div *ngIf="this.warframe.id === 0" class="create-warframe">
                     <h2 for="name">Enter Name</h2>
                     <input type="text" required id="name" class="form-control" placeholder="Name" [(ngModel)]="warframe.name"/>
+                    <input type="number" min="0" max="1" required id="prime" class="form-control" placeholder="Prime" [(ngModel)]="warframe.prime"/>
                     <button class="btn-primary btn-sm" (click)="create()">Save</button>
                 </div>
 
                 <!-- Name Display -->
-                <div *ngIf="this.warframe.id != 0 && !editMode" class="display-warframe">
+                <div *ngIf="this.warframe.id !== 0 && !editMode" class="display-warframe">
                     <h2><strong>{{ warframe.name }}</strong></h2> 
+                    <h2><strong>{{ warframe.prime }}</strong></h2> 
                     <button class="btn-primary btn-sm" (click)="toggleEdit()">Edit Name</button>
                 </div>
 
                 <!-- Edit Name -->
-                <div *ngIf="this.warframe.id != 0 && editMode" class="edit-warframe">
+                <div *ngIf="this.warframe.id !== 0 && editMode" class="edit-warframe">
                     <h2 for="name"><strong>Edit Name</strong></h2>
                     <input type="text" required id="name" class="form-control" placeholder="Name" [(ngModel)]="warframe.name"/>
+                    <input type="number" min="0" max="1" required id="prime" class="form-control" placeholder="Prime" [(ngModel)]="warframe.prime"/>
                     <button class="btn-primary btn-sm" (click)="update()">Save</button>
                     <button class="btn-primary btn-sm" (click)="toggleEdit()">Cancel</button>
                 </div>
 
-                <div class="stat-details">
-                    <!-- <app-warframe-stats></app-warframe-stats> -->
+                <div class="stat-details" *ngIf="this.warframe.id !== 0">
+                    <app-warframe-stats [warframeId]="warframe.id"></app-warframe-stats>
                 </div>
 
             </div>

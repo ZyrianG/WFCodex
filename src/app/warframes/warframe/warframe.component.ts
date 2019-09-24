@@ -29,9 +29,6 @@ export class WarframeComponent implements OnInit {
                   (success) => this.warframe = success,
                 );
         }
-        // else {
-        //     this.warframe = emptyWarframe;
-        // }
     }
 
     backToWarframes(): void {
