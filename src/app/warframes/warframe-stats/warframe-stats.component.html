@@ -1,4 +1,5 @@
-<div *ngIf="!isVisible">
+<!-- Stats Display -->
+<div *ngIf="!editMode" class="stat-display">
   <div> 
     <ul>  
       <li>Mastery Rank</li>
@@ -13,6 +14,8 @@
       <p>{{ stat.energy }}</p>
       <li>Sprint Speed</li>
       <p>{{ stat.sprintspeed }}</p>
+      <li>FrameID</li>
+      <p>{{ stat.warframeid }}</p>
       <li>Polarities</li>
     </ul>
   </div>
@@ -24,8 +27,8 @@
   </div>
 </div>
 
-<!-- Edit stats form -->
-<div *ngIf="isVisible">
+<!-- Edit Stats Form -->
+<div *ngIf="editMode" class="edit-stats">
   <div>
 
     <label for="mastery">Mastery Rank</label>
@@ -46,6 +49,10 @@
     <label for="sprint">Sprint Speed</label>
     <input type="number" step=".05" min="1" max="3" id="sprint" class="form-control" [(ngModel)]="stat.sprintspeed" placeholder="Sprint Speed" required />
       
+    <label for="frameid">Frame ID</label>
+    <input type="number" id="frame" class="form-control" [(ngModel)]="stat.warframeid" placeholder="FrameID" required />
+      
+
   </div>
   <div style="height: 3rem" class="align-top">
     <button class="btn btn-primary btn-sm" (click)="save()">Save</button>

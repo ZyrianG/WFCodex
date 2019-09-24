@@ -25,7 +25,7 @@ export const emptyStat: IFrameStat = {
     shield: 0,
     armor: 0,
     energy: 0,
-    sprintspeed: 0,
+    sprintspeed: 1,
     warframeid: 0,
     createdAt: null,
     updatedAt: null,
