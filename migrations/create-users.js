@@ -1,31 +1,30 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('WarframeStats', {
+    return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      health: {
-        type: Sequelize.INTEGER
+      username: {
+        type: Sequelize.STRING
       },
-      shield: {
-        type: Sequelize.INTEGER
+      email: {
+        type: Sequelize.STRING
       },
-      armor: {
-        type: Sequelize.INTEGER
+      first: {
+        type: Sequelize.STRING
       },
-      energy: {
-        type: Sequelize.INTEGER
+      last: {
+        type: Sequelize.STRING
       },
-      sprintspeed: {
-        type: Sequelize.DECIMAL
+      isAdmin: {
+        type: Sequelize.BOOLEAN
       },
-      warframeid: {
-        allowNull: false,
-        type: Sequelize.INTEGER
+      password: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -38,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('WarframeStats');
+    return queryInterface.dropTable('Users');
   }
 };
