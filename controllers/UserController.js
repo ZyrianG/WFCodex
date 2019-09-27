@@ -58,7 +58,7 @@ const getAll = async (req, res) => {
     if (err) return ReE(res, err, 500);
     if(!users) ReE(res, undefined, 404);
 
-    return ReS(res, users, 200)
+    return ReS(res, users, 200);
 };
 module.exports.getAll = getAll;
 
