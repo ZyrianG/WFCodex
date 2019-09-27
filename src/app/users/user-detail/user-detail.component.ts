@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserDetailComponent implements OnInit {
 
-  user: IUser = {...emptyUser};
+  user: IUser;
   editMode: boolean;
 
   constructor(
@@ -19,8 +19,28 @@ export class UserDetailComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    const id: number = +this.route.snapshot.paramMap.get('userId');
+    if (id > 0) {
+      this.usersService.get(id)
+        .subscribe(
+          (success) => this.user = success
+        );
+    }
+
   }
 
+  toggleEdit() {
+    this.editMode = !this.editMode;
+  }
+
+  save(): void {
+    this.usersService.save(this.user)
+      .subscribe(
+        (success) => {
+          this.toggleEdit();
+        }
+      );
+  }
 
 }

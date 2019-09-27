@@ -25,6 +25,14 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
+  save(user: IUser): Observable<number[] | IUser> {
+    if (user.id) {
+      return this.update(user);
+    } else {
+      return this.create(user);
+    }
+  }
+
   create(user: IUser): Observable<IUser> {
     return this.http.post<IUser>(`${this.usersUrl}`, user);
   }
