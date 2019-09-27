@@ -17,7 +17,7 @@ const getAll = async (req, res) => {
     if(!stats) return ReE(res, undefined, 404);
     
     return ReS(res, stats, 200);
-}
+};
 module.exports.getAll = getAll;
 
 const get = async (req, res) => {
@@ -35,7 +35,7 @@ const get = async (req, res) => {
   if (!warframeId) return ReE(res, undefined, 404);
 
 return ReS(res, stat, 200);
-}
+};
 module.exports.get = get;
 
 const create = async (req, res) => {
@@ -53,7 +53,7 @@ const create = async (req, res) => {
     // if (err) return ReE(res, err, 422);
 
     return ReS(res, stat, 201);
-}
+};
 module.exports.create = create;
 
 const update = async (req, res) => {
@@ -71,5 +71,5 @@ const update = async (req, res) => {
       if (err) return ReE(res, err, 422);
     
       return ReS(res, stat, 201);
-}
+};
 module.exports.update = update;

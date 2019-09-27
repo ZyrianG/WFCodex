@@ -15,10 +15,11 @@ const getAll = async (req, res) => {
         where: whereStatement
     }));
     
+    if (err) return ReE(res, err, 500);
     if(!warframes) return ReE(res, undefined, 404);
     
     return ReS(res, warframes, 200);
-}
+};
 module.exports.getAll = getAll;
 
 const get = async (req, res) => {
@@ -38,7 +39,7 @@ const get = async (req, res) => {
     if (!warframeId) return ReE(res, undefined, 404);
 
     return ReS(res, warframe, 200);
-}
+};
 module.exports.get = get;
 
 const create = async (req, res) => {
@@ -57,7 +58,7 @@ const create = async (req, res) => {
     if (err) return ReE(res, err, 422);
 
     return ReS(res, {warframe}, 201);
-}
+};
 module.exports.create = create;
 
 const update = async (req, res) => {
@@ -73,7 +74,7 @@ const update = async (req, res) => {
   if (err) return ReE(res, err, 422);
 
   return ReS(res, warframe, 201);
-}
+};
 module.exports.update = update;
 
 const remove = async (req, res) => {
@@ -91,7 +92,7 @@ const remove = async (req, res) => {
 
     return ReS(res, {message: `Warframe successfully deleted.`}, 204);
 
-}
+};
 module.exports.remove = remove;
 
 const isUnique = async (name) => {
@@ -105,5 +106,5 @@ const isUnique = async (name) => {
     if (warframe) {
         throw new error ('Warframe already exists!');
     }
-}
+};
 module.exports.isUnique = isUnique;
