@@ -4,17 +4,16 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       unique: true,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
       unique: true,
+      allowNull: false,
       validate: {
         isEmail: { msg: 'Please enter valid email' },
-        notNull: { msg: 'Email cannot be blank' },
       }
     },
-    first: DataTypes.STRING,
-    last: DataTypes.STRING,
     isAdmin: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -22,9 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        notNull: { msg: 'Please enter a password' },
-        min: 6,
+        len: { args: [6, 1024], msg: 'Password must be at least 6 characters long' },
       }
     } 
   }, {

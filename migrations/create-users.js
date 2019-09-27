@@ -14,12 +14,6 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      first: {
-        type: Sequelize.STRING
-      },
-      last: {
-        type: Sequelize.STRING
-      },
       isAdmin: {
         type: Sequelize.BOOLEAN
       },
