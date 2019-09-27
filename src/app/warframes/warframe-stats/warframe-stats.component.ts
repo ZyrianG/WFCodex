@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { IFrameStat, emptyStat, WarframeStatService } from './warframe-stats.service';
+import { IFrameStat, WarframeStatService } from './warframe-stats.service';
 import { WarframesService } from '../warframes.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -12,7 +12,7 @@ export class WarframeStatsComponent implements OnInit {
     @Input() warframeId: number;
 
     statsEntered: boolean;
-    stat: IFrameStat = {...emptyStat};
+    stat: IFrameStat;
     editMode: boolean;
 
     constructor (
@@ -22,17 +22,11 @@ export class WarframeStatsComponent implements OnInit {
 
     ngOnInit(): void {
         console.log(`WarframeID: ${JSON.stringify(this.warframeId)}`);
-
         // Returns existing frame stats
-        if (this.statsExists(this.warframeId)) {
+        if (this.warframeId > 0) {
             this.getStats(this.warframeId);
             console.log(`Outside of subscription: ${JSON.stringify(this.stat)}`);
-        } else {
-            console.log(`Stats don't exist`);
         }
-
-        console.log(this.statsExists(this.warframeId));
-
     }
 
     save(): void {
@@ -43,6 +37,26 @@ export class WarframeStatsComponent implements OnInit {
                 console.log(`OnSave: ${JSON.stringify(this.stat)}`);
             }
         );
+    }
+
+    create(): void {
+        const newStat: IFrameStat = {
+            mastery: 0,
+            health: 0,
+            shield: 0,
+            armor: 0,
+            energy: 0,
+            sprintspeed: 1,
+            warframeid: this.warframeId,
+            createdAt: new Date(),
+        };
+        this.warframeStatService.create(newStat)
+            .subscribe(
+                (success) => {
+                    this.stat = success,
+                    this.toggleEdit();
+                }
+            );
     }
 
     getStats(id: number): Subscription {
@@ -61,15 +75,5 @@ export class WarframeStatsComponent implements OnInit {
 
     toggleStatsEntered(): void {
         this.statsEntered = !this.statsEntered;
-    }
-
-    statsExists(id: number): boolean {
-        const tempStat = this.warframeStatService.get(id).subscribe();
-
-        if (tempStat) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }
