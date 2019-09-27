@@ -15,7 +15,7 @@ npm install bootstrap --save
 ```
 For angular to recognize the bootstrap.css
 ```
-Add the following in .agular-cli.json
+Add the following in .angular-cli.json
 "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.css"
@@ -28,7 +28,29 @@ Add the following in .agular-cli.json
 ```
 
 ## Sequelize
-Run the following commands to create db tables
+Run the following commands to create db tables (migrations)
 ```
 sequelize model:generate --name Warframes --attributes name:string,prime:integer
 ```
+
+Adjust models to meet table requirements (such as unique, allowNull, etc.)
+```
+name: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+    },
+```
+
+Add model associations to attach foreign keys to primary keys, and vice versa
+```
+Warframes.associate = function(models) {  
+    models.Warframes.belongsToMany(models.AbilityDetails, {through: 'WarframeAbility', foreignKey: 'warframeid'});
+  };
+
+Warframes.associate = function(models) {
+    models.Warframes.hasOne(models.WarframeStats, { foreignKey: 'warframeid', sourceKey: 'id' });
+  };
+```
+
+## Authentication
