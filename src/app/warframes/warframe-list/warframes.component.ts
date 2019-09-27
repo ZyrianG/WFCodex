@@ -22,11 +22,10 @@ export class WarframesComponent implements OnInit {
     }
 
     getWarframes(): void {
-        this.warframesService.getAll().subscribe(
-            (answer) => {
-                this.warframes = answer;
-            },
-        );
+        this.warframesService.getAll()
+            .subscribe(
+                (success) => this.warframes = success,
+            );
     }
 
     goToWarframe(warframe: IWarframe): void {
@@ -37,7 +36,4 @@ export class WarframesComponent implements OnInit {
         this.router.navigate([`/warframes/add`]);
     }
 
-    // goSyncData(): void {
-    //     this.warframesService.pullData(this.warframes);
-    // }
 }

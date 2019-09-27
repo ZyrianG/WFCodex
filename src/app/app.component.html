@@ -5,10 +5,10 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div>
-    <div class="navbar-brand collapse navbar-collapse" id="navContent">
+  <div class="navbar-brand collapse navbar-collapse" id="navContent">
+    <div>
 
-      <button class="border border-light rounded" mat-button [matMenuTriggerFor]="basics">Basics</button>
+      <button class="rounded" mat-button [matMenuTriggerFor]="basics">Basics</button>
 
       <mat-menu #basics="matMenu" [overlapTrigger]="false">
         <button mat-menu-item class="nav-link" routerLink="/warframes">Warframes</button>
@@ -32,15 +32,16 @@
         <button mat-menu-item>Melee</button>
       </mat-menu>
 
-      <button class="border border-light rounded" mat-button [matMenuTriggerFor]="advanced">Advanced</button>
+      <button class="rounded" mat-button [matMenuTriggerFor]="advanced">Advanced</button>
 
       <mat-menu #advanced="matMenu" [overlapTrigger]="false">
         <button mat-menu-item>Mastery</button>
         <button mat-menu-item>Focus</button>
         <button mat-menu-item>Clan</button>
       </mat-menu>
-    </div>
 
+      <button class="rounded nav-link" mat-button routerLink="/users">Users</button>
+    </div>
   </div>
 
   <div class="collapse navbar-collapse" id="navContent">
