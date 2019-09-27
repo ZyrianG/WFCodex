@@ -1,3 +1,19 @@
-<p>
-  users-list works!
-</p>
+<div class="row header-row">
+  <div class="header-row">
+      <h4><strong>Users</strong></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3" *ngFor="let user of users" (click)="goToUser(user)">
+      <div class="card" style="width: 15rem;" [style.cursor]="'pointer'">
+          <div class="card-body">
+              <h3 class="card-title">{{ user.username }}</h3>
+              <h5 class="card-text">{{ user.email }}</h5>
+              <p class="card-text">Sample text</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+<br>
+<button class="btn btn-primary btn-sm">Add New</button>
