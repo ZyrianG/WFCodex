@@ -40,11 +40,9 @@ module.exports.get = get;
 
 const create = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    let err, stat, statInfo, warframeId;
+    let err, stat, statInfo;
 
-    warframeId = req.params.warframeId;
     statInfo = req.body;
-    statInfo.warframeid = warframeId;
 
     [err, stat] = await to(WarframeStats.create(statInfo));
     if (err) return ReE(res, err, 422);
@@ -58,9 +56,8 @@ module.exports.create = create;
 
 const update = async (req, res) => {
     let err, stat, statInfo, warframeId;
-    warframeId = req.params.warframeId;
     statInfo = req.body;
-    statInfo.warframeid = this.warframeId;
+    warframeId = req.params.warframeId;
 
     [err, stat] = await to(WarframeStats.update(statInfo, {
         where: {
