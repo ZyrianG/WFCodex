@@ -20,7 +20,7 @@ export class WarframeComponent implements OnInit {
 
     ngOnInit(): void {
         const id: number = +this.route.snapshot.paramMap.get('warframeId');
-        if (id) {
+        if (id > 0) {
             this.warframesService.getById(id)
                 .subscribe(
                   (success) => this.warframe = success,
