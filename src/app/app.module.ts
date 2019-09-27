@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { WarframesModule } from './warframes/warframes.module';
 import { WarframesService } from './warframes/warframes.service';
 import { WarframeStatService } from './warframes/warframe-stats/warframe-stats.service';
+import { UsersModule } from './users/users.module';
+import { UsersService } from './users/users.service';
 
 const matModules = [
   MatMenuModule,
@@ -35,6 +37,7 @@ const matModules = [
     FormsModule,
     matModules,
     WarframesModule,
+    UsersModule,
     AppRoutingModule,
   ],
   exports: [
@@ -43,6 +46,7 @@ const matModules = [
   providers: [
     WarframesService,
     WarframeStatService,
+    UsersService,
   ],
   bootstrap: [AppComponent]
 })
