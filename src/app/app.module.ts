@@ -17,7 +17,7 @@ import { WarframeStatService } from './warframes/warframe-stats/warframe-stats.s
 import { UsersModule } from './users/users.module';
 import { UsersService } from './users/users.service';
 
-const matModules = [
+const MatModules = [
   MatMenuModule,
   MatButtonModule,
   MatCheckboxModule,
@@ -36,14 +36,14 @@ const matModules = [
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    matModules,
+    MatModules,
     NgbModule,
     WarframesModule,
     UsersModule,
     AppRoutingModule,
   ],
   exports: [
-    matModules,
+    MatModules,
   ],
   providers: [
     NgbProgressbarConfig,

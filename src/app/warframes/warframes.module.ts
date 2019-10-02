@@ -10,6 +10,13 @@ import { WarframeDetailsComponent } from './warframe-details/warframe-details.co
 import { FormsModule } from '@angular/forms';
 import { WarframeStatService } from './warframe-stats/warframe-stats.service';
 import { NgbModule, NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
+import { MatFormFieldModule, MatInputModule, MatSlideToggleModule } from '@angular/material';
+
+const MatModules = [
+    MatFormFieldModule,
+    MatInputModule,
+    MatSlideToggleModule,
+];
 
 @NgModule ({
     declarations: [
@@ -21,6 +28,7 @@ import { NgbModule, NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
     imports: [
         CommonModule,
         FormsModule,
+        MatModules,
         NgbModule,
         WarframeRoutingModule,
     ],
@@ -28,7 +36,9 @@ import { NgbModule, NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 export class WarframesModule {
     static forRoot(): any {
         return {
-            ngModule: WarframesModule,
+            ngModule: [
+                WarframesModule,
+            ],
             providers: [
                 NgbProgressbarConfig,
                 WarframesService,
