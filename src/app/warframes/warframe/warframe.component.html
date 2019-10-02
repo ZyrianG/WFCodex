@@ -5,27 +5,37 @@
 
                 <!-- Name Creation -->
                 <div *ngIf="this.warframe.id === 0" class="create-warframe">
-                    <h2 for="name">Enter Name</h2>
-                    <input type="text" required id="name" class="form-control" placeholder="Name" [(ngModel)]="warframe.name"/>
-                    <input type="number" min="0" max="1" required id="prime" class="form-control" placeholder="Prime" [(ngModel)]="warframe.prime"/>
-                    <button class="btn-primary btn-sm" (click)="create()">Save</button>
+                    <h2 for="name">New Warframe</h2>
+                    <form>
+                        <mat-form-field>
+                            <input matInput type="text" placeholder="Enter Name" [(ngModel)]="warframe.name" name="name">
+                        </mat-form-field>
+                        <mat-slide-toggle class="prime-toggle" [(ngModel)]="warframe.prime" name="prime" (click)="togglePrime()">Prime</mat-slide-toggle>
+                        <!-- <input type="number" min="0" max="1" name="prime" required id="prime" class="form-control" placeholder="Prime" [(ngModel)]="warframe.prime"/> -->
+                        <button class="btn-primary btn-sm" (click)="create()">Save</button>
+                    </form>
                 </div>
 
                 <div *ngIf="this.warframe.id !== 0" class="warframe-exists">
                     <!-- Name Display -->
                     <div *ngIf="!editMode" class="display-warframe">
-                        <h2><strong>{{ warframe.name }}</strong></h2> 
-                        <h2><strong>{{ warframe.prime }}</strong></h2> 
+                        <h2>{{ warframe.name }}</h2> 
+                        <h3>Prime? {{ warframe.prime }}</h3> 
                         <button class="btn-primary btn-sm" (click)="toggleEdit()">Edit Name</button>
                     </div>
     
                     <!-- Edit Name -->
                     <div *ngIf="editMode" class="edit-warframe">
-                        <h2 for="name"><strong>Edit Name</strong></h2>
-                        <input type="text" required id="name" class="form-control" placeholder="Name" [(ngModel)]="warframe.name"/>
-                        <input type="number" min="0" max="1" required id="prime" class="form-control" placeholder="Prime" [(ngModel)]="warframe.prime"/>
-                        <button class="btn-primary btn-sm" (click)="update()">Save</button>
-                        <button class="btn-primary btn-sm" (click)="toggleEdit()">Cancel</button>
+                        <h2 for="name">Edit Warframe</h2>
+                        <form>
+                            <mat-form-field>
+                                <input matInput type="text" placeholder="Edit Name" [(ngModel)]="warframe.name" name="name">
+                            </mat-form-field>
+                            <mat-slide-toggle class="prime-toggle" [(ngModel)]="warframe.prime" name="prime" (click)="togglePrime()">Prime</mat-slide-toggle>
+                            <!-- <input type="number" min="0" max="1" name="prime" required id="prime" class="form-control" placeholder="Prime" [(ngModel)]="warframe.prime"/> -->
+                            <button class="btn-primary btn-sm" (click)="update()">Save</button>
+                            <button class="btn-primary btn-sm" (click)="toggleEdit()">Cancel</button>
+                        </form>
                     </div>
     
                     <div class="stat-details">

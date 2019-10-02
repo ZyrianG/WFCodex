@@ -11,6 +11,7 @@ export class WarframeComponent implements OnInit {
 
     warframe: IWarframe = {...emptyWarframe};
     editMode: boolean;
+    primeDefault = 0;
 
     constructor (
         private warframesService: WarframesService,
@@ -52,6 +53,10 @@ export class WarframeComponent implements OnInit {
 
     toggleEdit(): void {
         this.editMode = !this.editMode;
+    }
+
+    togglePrime(): void {
+        this.primeDefault = ((this.primeDefault === 0) ? 1 : 0);
     }
 
 }
