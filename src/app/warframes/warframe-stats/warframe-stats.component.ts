@@ -7,7 +7,10 @@ import { Subscription } from 'rxjs/Subscription';
 @Component ({
     selector: 'app-warframe-stats',
     templateUrl: './warframe-stats.component.html',
-    styleUrls: ['../../app.component.css'],
+    styleUrls: [
+        '../../app.component.css',
+        './warframe-stats.component.css'
+],
 
 })
 export class WarframeStatsComponent implements OnInit {

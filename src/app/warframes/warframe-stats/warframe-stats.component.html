@@ -2,20 +2,29 @@
 <div *ngIf="!editMode && stat" class="stat-display">
   <div> 
     <div>  
-      <li>Frame ID {{ stat.warframeid }}</li>
       <br>
-      <li>Mastery Rank {{ stat.mastery }}</li>
-      <br>
-      <li>Health</li>
+      <mat-form-field>
+        <input matInput disabled value="Frame ID {{ stat.warframeid }}">
+      </mat-form-field>
+
+      <p matInput>Mastery Rank {{ stat.mastery }}</p>
+     
+      <p matInput>Health</p>
       <p><ngb-progressbar type="danger" [value]="stat.health" [max]="500">{{ stat.health }}</ngb-progressbar></p>
-      <li>Shield</li>
+      
+      <p>Shield</p>
       <p><ngb-progressbar type="success" [value]="stat.shield" [max]="500">{{ stat.shield }}</ngb-progressbar></p>
-      <li>Armor</li>
+      
+      <p>Armor</p>
       <p><ngb-progressbar type="warning" [value]="stat.armor" [max]="500">{{ stat.armor }}</ngb-progressbar></p>
-      <li>Energy</li>
-      <p><ngb-progressbar type="primary" [value]="stat.shield" [max]="500">{{ stat.shield }}</ngb-progressbar></p>
-      <li>Sprint Speed</li>
-      <p>{{ stat.sprintspeed }}</p>
+      
+      <p>Energy</p>
+      <p><ngb-progressbar type="primary" [value]="stat.energy" [max]="500">{{ stat.energy }}</ngb-progressbar></p>
+      
+      <p>Sprint Speed
+        <br>
+        {{ stat.sprintspeed }}
+      </p>
     </div>
   </div>
   <div style="height: 3rem" class="align-top">
@@ -25,33 +34,38 @@
 </div>
 
 <!-- Edit Stats Form -->
-<div *ngIf="editMode && stat" class="edit-stats">
+<form *ngIf="editMode && stat" class="edit-stats">
   <div>
-
-    <label>Frame ID {{ stat.warframeid }}</label>
+    <br>
+    <mat-form-field>
+      <input matInput disabled value="Frame ID {{ stat.warframeid }}">
+    </mat-form-field>
   
     <br>
-    <label for="mastery">Mastery Rank</label>
-    <input type="number" min="0" max="30" id="mastery" class="form-control" [(ngModel)]="stat.mastery" placeholder="Mastery" />
+    <mat-form-field>
+      <input matInput type="number" min="0" max="30" placeholder="Mastery Rank" [(ngModel)]="stat.mastery" name="mastery">
+    </mat-form-field>
       
-    <label for="health">Health</label>
-    <input type="number" id="health" class="form-control" [(ngModel)]="stat.health" placeholder="Health" required />
+    <mat-form-field>
+      <input matInput type="number" placeholder="Health" [(ngModel)]="stat.health" name="health">
+    </mat-form-field>
       
-    <label for="shield">Shield</label>
-    <input type="number" id="shield" class="form-control" [(ngModel)]="stat.shield" placeholder="Shield" required />
+    <mat-form-field>
+      <input matInput type="number" placeholder="Shield" [(ngModel)]="stat.shield" name="shield">
+    </mat-form-field>
       
-    <label for="armor">Armor</label>
-    <input type="number" id="armor" class="form-control" [(ngModel)]="stat.armor" placeholder="Armor" required />
+    <mat-form-field>
+      <input matInput type="number" placeholder="Armor" [(ngModel)]="stat.armor" name="armor">
+    </mat-form-field>
       
-    <label for="energy">Energy</label>
-    <input type="number" id="energy" class="form-control" [(ngModel)]="stat.energy" placeholder="Energy" required />
+    <mat-form-field for="energy">
+      <input matInput type="number" placeholder="Energy" [(ngModel)]="stat.energy" name="energy">
+    </mat-form-field>
       
-    <label for="sprint">Sprint Speed</label>
-    <input type="number" step=".05" min="1" max="3" id="sprint" class="form-control" [(ngModel)]="stat.sprintspeed" placeholder="Sprint Speed" required />
+    <mat-form-field for="sprint">
+      <input matInput type="number" step=".05" min="1" max="3" placeholder="Sprint Speed" [(ngModel)]="stat.sprintspeed" name="sprintspeed">
+    </mat-form-field>
       
-    <!-- <label for="frameid">Frame ID</label>
-    <input type="number" id="frameid" class="form-control" [(ngModel)]="stat.warframeid" placeholder="FrameID" required />
-       -->
   </div>
 
   <div style="height: 3rem" class="align-top">
@@ -59,12 +73,14 @@
     <!-- <button class="btn btn-danger btn-sm" (click)="delete()">Delete</button> -->
     <button class="btn btn-info btn-sm" (click)="toggleEdit()">Cancel</button>
   </div>
-</div>
+</form>
 
 <!-- No Stats Yet -->
 <div class="no-stat" *ngIf="!stat">
-  <div class="create-stats">
-      <h2 for="name">No Stats Yet</h2>
+  <form class="create-stats">
+      <mat-form-field>
+        <input matInput placeholder="No Stats (disabled)" disabled value="">
+      </mat-form-field>
       <button class="btn-primary btn-sm" (click)="create()">Create</button>
-  </div>
+  </form>
 </div>
