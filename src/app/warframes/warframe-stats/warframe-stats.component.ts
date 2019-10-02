@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs/Subscription';
 @Component ({
     selector: 'app-warframe-stats',
     templateUrl: './warframe-stats.component.html',
+    styleUrls: ['../../app.component.css'],
+
 })
 export class WarframeStatsComponent implements OnInit {
     @Input() warframeId: number;
@@ -21,11 +23,11 @@ export class WarframeStatsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        console.log(`WarframeID: ${JSON.stringify(this.warframeId)}`);
+        // console.log(`WarframeID: ${JSON.stringify(this.warframeId)}`);
         // Returns existing frame stats
         if (this.warframeId > 0) {
             this.getStats(this.warframeId);
-            console.log(`Outside of subscription: ${JSON.stringify(this.stat)}`);
+            // console.log(`Outside of subscription: ${JSON.stringify(this.stat)}`);
         }
     }
 
@@ -33,8 +35,7 @@ export class WarframeStatsComponent implements OnInit {
         this.warframeStatService.save(this.stat)
         .subscribe(
             (success) => {
-                this.toggleEdit(),
-                console.log(`OnSave: ${JSON.stringify(this.stat)}`);
+                this.toggleEdit();
             }
         );
     }
@@ -63,9 +64,7 @@ export class WarframeStatsComponent implements OnInit {
         return this.warframeStatService.get(id)
             .subscribe(
                 success => {
-                    this.stat = success,
-                    console.log(`Stats Exist: ${JSON.stringify(this.stat)}`);
-                }
+                    this.stat = success;                }
             );
     }
 

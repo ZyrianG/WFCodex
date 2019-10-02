@@ -6,7 +6,7 @@ import { IWarframe, emptyWarframe, WarframesService } from '../warframes.service
 @Component ({
     selector: 'app-warframe-details',
     templateUrl: './warframe-details.component.html',
-    styleUrls: ['./warframe-details.component.css']
+    styleUrls: ['../../app.component.css'],
 })
 export class WarframeDetailsComponent implements OnInit {
 

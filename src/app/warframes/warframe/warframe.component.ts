@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component ({
     selector: 'app-warframe',
     templateUrl: './warframe.component.html',
-    styleUrls: ['./warframe.component.css']
+    styleUrls: ['../../app.component.css'],
 })
 export class WarframeComponent implements OnInit {
 
