@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatIconModule, MatExpansionModule, MatTabsModule } from '@angular/material';
+import { NgbModule, NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,6 +37,7 @@ const matModules = [
     HttpClientModule,
     FormsModule,
     matModules,
+    NgbModule,
     WarframesModule,
     UsersModule,
     AppRoutingModule,
@@ -44,6 +46,7 @@ const matModules = [
     matModules,
   ],
   providers: [
+    NgbProgressbarConfig,
     WarframesService,
     WarframeStatService,
     UsersService,

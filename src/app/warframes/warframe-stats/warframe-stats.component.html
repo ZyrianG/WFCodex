@@ -1,22 +1,22 @@
 <!-- Stats Display -->
 <div *ngIf="!editMode && stat" class="stat-display">
   <div> 
-    <ul>  
-      <li>FrameID {{ stat.warframeid }}</li>
+    <div>  
+      <li>Frame ID {{ stat.warframeid }}</li>
       <br>
-      <li>Mastery Rank</li>
-      <p>{{ stat.mastery }}</p>
+      <li>Mastery Rank {{ stat.mastery }}</li>
+      <br>
       <li>Health</li>
-      <p>{{ stat.health }}</p>
+      <p><ngb-progressbar type="danger" [value]="stat.health" [max]="500">{{ stat.health }}</ngb-progressbar></p>
       <li>Shield</li>
-      <p>{{ stat.shield }}</p>
+      <p><ngb-progressbar type="success" [value]="stat.shield" [max]="500">{{ stat.shield }}</ngb-progressbar></p>
       <li>Armor</li>
-      <p>{{ stat.armor }}</p>
+      <p><ngb-progressbar type="warning" [value]="stat.armor" [max]="500">{{ stat.armor }}</ngb-progressbar></p>
       <li>Energy</li>
-      <p>{{ stat.energy }}</p>
+      <p><ngb-progressbar type="primary" [value]="stat.shield" [max]="500">{{ stat.shield }}</ngb-progressbar></p>
       <li>Sprint Speed</li>
       <p>{{ stat.sprintspeed }}</p>
-    </ul>
+    </div>
   </div>
   <div style="height: 3rem" class="align-top">
     <button class="btn btn-primary btn-sm" (click)="toggleEdit()">Edit</button>

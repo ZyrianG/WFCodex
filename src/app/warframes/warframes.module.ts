@@ -9,6 +9,7 @@ import { WarframeStatsComponent } from './warframe-stats/warframe-stats.componen
 import { WarframeDetailsComponent } from './warframe-details/warframe-details.component';
 import { FormsModule } from '@angular/forms';
 import { WarframeStatService } from './warframe-stats/warframe-stats.service';
+import { NgbModule, NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule ({
     declarations: [
@@ -20,6 +21,7 @@ import { WarframeStatService } from './warframe-stats/warframe-stats.service';
     imports: [
         CommonModule,
         FormsModule,
+        NgbModule,
         WarframeRoutingModule,
     ],
 })
@@ -28,6 +30,7 @@ export class WarframesModule {
         return {
             ngModule: WarframesModule,
             providers: [
+                NgbProgressbarConfig,
                 WarframesService,
                 WarframeStatService,
             ],
