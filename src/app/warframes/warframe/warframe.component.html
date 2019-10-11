@@ -12,7 +12,7 @@
                         </mat-form-field>
                         <mat-slide-toggle class="prime-toggle" [(ngModel)]="warframe.prime" name="prime" (click)="togglePrime()">Prime</mat-slide-toggle>
                         <!-- <input type="number" min="0" max="1" name="prime" required id="prime" class="form-control" placeholder="Prime" [(ngModel)]="warframe.prime"/> -->
-                        <button class="btn-primary btn-sm" (click)="create()">Save</button>
+                        <button class="btn btn-primary btn-sm" (click)="create()">Save</button>
                     </form>
                 </div>
 
@@ -21,7 +21,7 @@
                     <div *ngIf="!editMode" class="display-warframe">
                         <h2>{{ warframe.name }}</h2> 
                         <h3>Prime? {{ warframe.prime }}</h3> 
-                        <button class="btn-primary btn-sm" (click)="toggleEdit()">Edit Name</button>
+                        <button class="btn btn-primary btn-sm" (click)="toggleEdit()">Edit Name</button>
                     </div>
     
                     <!-- Edit Name -->
@@ -33,8 +33,9 @@
                             </mat-form-field>
                             <mat-slide-toggle class="prime-toggle" [(ngModel)]="warframe.prime" name="prime" (click)="togglePrime()">Prime</mat-slide-toggle>
                             <!-- <input type="number" min="0" max="1" name="prime" required id="prime" class="form-control" placeholder="Prime" [(ngModel)]="warframe.prime"/> -->
-                            <button class="btn-primary btn-sm" (click)="update()">Save</button>
-                            <button class="btn-primary btn-sm" (click)="toggleEdit()">Cancel</button>
+                            <br>
+                            <button class="btn btn-primary btn-sm" (click)="update()">Save</button>
+                            <button class="btn btn-danger btn-sm" (click)="toggleEdit()">Cancel</button>
                         </form>
                     </div>
     
@@ -56,5 +57,5 @@
 </div>
 
 <div style="height: 3rem" class="align-bottom">
-    <button class="btn btn-info btn-sm" (click)="backToWarframes()">Cancel</button>
+    <button class="btn btn-danger btn-sm" (click)="backToWarframes()">Cancel</button>
 </div>

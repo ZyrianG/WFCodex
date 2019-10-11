@@ -4,10 +4,11 @@
     <div>  
       <br>
       <mat-form-field>
-        <input matInput disabled value="Frame ID {{ stat.warframeid }}">
+        <input matInput disabled value="Rank">
+        <mat-slider class="rank-slider" min=0 max=30 step=1 [value]=rank thumbLabel=true></mat-slider>
       </mat-form-field>
 
-      <p matInput>Mastery Rank {{ stat.mastery }}</p>
+      <p matInput>Mastery {{ stat.mastery }}</p>
      
       <p matInput>Health</p>
       <p><ngb-progressbar type="danger" [value]="stat.health" [max]="500">{{ stat.health }}</ngb-progressbar></p>
@@ -38,12 +39,12 @@
   <div>
     <br>
     <mat-form-field>
-      <input matInput disabled value="Frame ID {{ stat.warframeid }}">
+      <input matInput disabled value="Base Stats">
     </mat-form-field>
   
     <br>
     <mat-form-field>
-      <input matInput type="number" min="0" max="30" placeholder="Mastery Rank" [(ngModel)]="stat.mastery" name="mastery">
+      <input matInput type="number" min="0" max="30" placeholder="Mastery" [(ngModel)]="stat.mastery" name="mastery">
     </mat-form-field>
       
     <mat-form-field>
@@ -71,7 +72,7 @@
   <div style="height: 3rem" class="align-top">
     <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
     <!-- <button class="btn btn-danger btn-sm" (click)="delete()">Delete</button> -->
-    <button class="btn btn-info btn-sm" (click)="toggleEdit()">Cancel</button>
+    <button class="btn btn-danger btn-sm" (click)="toggleEdit()">Cancel</button>
   </div>
 </form>
 
@@ -81,6 +82,6 @@
       <mat-form-field>
         <input matInput placeholder="No Stats" disabled value="">
       </mat-form-field>
-      <button class="btn-primary btn-sm" (click)="create()">Create</button>
+      <button class="btn btn-primary btn-sm" (click)="create()">Create</button>
   </form>
 </div>
