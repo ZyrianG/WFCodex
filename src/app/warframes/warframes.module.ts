@@ -13,11 +13,13 @@ import { NgbModule, NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 
 const MatModules = [
     MatFormFieldModule,
     MatInputModule,
     MatSlideToggleModule,
+    MatSliderModule,
 ];
 
 @NgModule ({
