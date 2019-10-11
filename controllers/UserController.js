@@ -37,7 +37,7 @@ const get = async (req, res) => {
     let err, user, userId;
     userId = req.params.userId;
 
-    [err, user] = await to(Users.find({
+    [err, user] = await to(Users.findOne({
         where: {
             id: userId
         }

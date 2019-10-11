@@ -26,7 +26,7 @@ const get = async (req, res) => {
 
   warframeId = req.params.warframeId;
 
-  [err, stat] = await to(WarframeStats.find({
+  [err, stat] = await to(WarframeStats.findOne({
     where: { 
         warframeid : warframeId 
     }
