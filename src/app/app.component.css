@@ -3,10 +3,6 @@ li {
     margin: 0px;
 }
 
-.edit-stats {
-    width: 100%;
-}
-
 .router-container {
     transition: all 0.5s smooth;
 }

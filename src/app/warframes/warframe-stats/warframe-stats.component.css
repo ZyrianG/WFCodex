@@ -1,3 +1,11 @@
 .stat-display {
     transition: all 0.5s smooth;
 }
+
+.rank-slider {
+    width: 100%;
+}
+
+.edit-stats {
+    width: 100%;
+}
