@@ -10,7 +10,9 @@ import { WarframeDetailsComponent } from './warframe-details/warframe-details.co
 import { FormsModule } from '@angular/forms';
 import { WarframeStatService } from './warframe-stats/warframe-stats.service';
 import { NgbModule, NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
-import { MatFormFieldModule, MatInputModule, MatSlideToggleModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const MatModules = [
     MatFormFieldModule,
