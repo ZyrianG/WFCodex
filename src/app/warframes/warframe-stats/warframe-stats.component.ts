@@ -19,6 +19,11 @@ export class WarframeStatsComponent implements OnInit {
     statsEntered: boolean;
     stat: IFrameStat;
     editMode: boolean;
+    rank: number = 0;
+    health: number;
+    shield: number;
+    energy: number;
+
 
     constructor (
         private warframeStatService: WarframeStatService,
@@ -67,7 +72,8 @@ export class WarframeStatsComponent implements OnInit {
         return this.warframeStatService.get(id)
             .subscribe(
                 success => {
-                    this.stat = success;                }
+                    this.stat = success;                
+                }
             );
     }
 
@@ -77,5 +83,13 @@ export class WarframeStatsComponent implements OnInit {
 
     toggleStatsEntered(): void {
         this.statsEntered = !this.statsEntered;
+    }
+
+    updatedStat(stat, rank): void {
+        if (rank%3 === 0) {
+            this.health = stat + (stat * 0.2) * rank;
+            this.shield = stat + (stat * 0.2) * rank;
+            this.energy = stat + (stat * 0.05) * rank;
+        }
     }
 }

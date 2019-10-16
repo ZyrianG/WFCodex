@@ -5,22 +5,22 @@
       <br>
       <mat-form-field>
         <input matInput disabled value="Rank">
-        <mat-slider class="rank-slider" min=0 max=30 step=1 [value]=rank thumbLabel=true></mat-slider>
+        <mat-slider class="rank-slider" min=0 max=30 step=1 [(value)]=rank (change)="updatedStat(stat.health, rank, $event)" thumbLabel=true></mat-slider>
       </mat-form-field>
 
       <p matInput>Mastery {{ stat.mastery }}</p>
      
       <p matInput>Health</p>
-      <p><ngb-progressbar type="danger" [value]="stat.health" [max]="500">{{ stat.health }}</ngb-progressbar></p>
+      <p><ngb-progressbar type="danger" [(value)]="health" [max]="500">{{ health }}</ngb-progressbar></p>
       
       <p>Shield</p>
-      <p><ngb-progressbar type="success" [value]="stat.shield" [max]="500">{{ stat.shield }}</ngb-progressbar></p>
+      <p><ngb-progressbar type="success" [value]="shield" [max]="500">{{ shield }}</ngb-progressbar></p>
       
       <p>Armor</p>
       <p><ngb-progressbar type="warning" [value]="stat.armor" [max]="500">{{ stat.armor }}</ngb-progressbar></p>
       
       <p>Energy</p>
-      <p><ngb-progressbar type="primary" [value]="stat.energy" [max]="500">{{ stat.energy }}</ngb-progressbar></p>
+      <p><ngb-progressbar type="primary" [value]="energy" [max]="500">{{ energy }}</ngb-progressbar></p>
       
       <p>Sprint Speed
         <br>
